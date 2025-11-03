@@ -1,0 +1,111 @@
+name: Build App
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.arch }}
+      cancel-in-progress: true
+    strategy:
+      matrix:
+        arch: [x64, arm64]
+      max-parallel: 1  # 防止证书导入冲突
+
+    env:
+      BuildVersion: 2.4.${{ github.run_number }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore dependencies
+        run: dotnet restore WinWoL/WinWoL.csproj
+
+      # ==================== 生成 Code Signing 证书 ====================
+      - name: Generate Code Signing Certificate
+        shell: pwsh
+        run: |
+          $pfxName = "WinWoL_CI_${{ matrix.arch }}.pfx"
+          $pfxPath = "$env:RUNNER_TEMP\$pfxName"
+          $password = "WinWoL2025"
+
+          # 生成具备 Code Signing EKU 的证书
+          $cert = New-SelfSignedCertificate `
+            -Subject "CN=WinWoL CI ${{ matrix.arch }}" `
+            -KeyUsage DigitalSignature `
+            -KeySpec Signature `
+            -CertStoreLocation "Cert:\CurrentUser\My" `
+            -NotAfter (Get-Date).AddYears(1) `
+            -KeyExportPolicy Exportable `
+            -KeyLength 2048 `
+            -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+            -HashAlgorithm SHA256 `
+            -Type CodeSigningCert `
+            -FriendlyName "WinWoL CI Code Signing"
+
+          # 导出 PFX
+          $pwd = ConvertTo-SecureString -String $password -Force -AsPlainText
+          Export-PfxCertificate -Cert $cert -FilePath $pfxPath -Password $pwd
+
+          # 导入到 LocalMachine\TrustedPeople（MSIX 打包器信任）
+          certutil -importpfx -p $password "TrustedPeople" "$pfxPath" | Out-Null
+
+          # 输出 Thumbprint
+          $thumb = $cert.Thumbprint
+          echo "CERT_THUMBPRINT=$thumb" >> $env:GITHUB_ENV
+          Write-Host "Certificate Thumbprint: $thumb"
+
+      # ==================== MSIX 打包 ====================
+      - name: Package MSIX Bundle
+        shell: pwsh
+        run: |
+          $proj = "WinWoL/WinWoL.csproj"
+          $plat = "${{ matrix.arch }}"
+
+          msbuild $proj /restore /t:Publish `
+            /p:Configuration=Release `
+            /p:Platform=$plat `
+            /p:TargetFramework=net8.0-windows10.0.19041.0 `
+            /p:RuntimeIdentifier=win-$plat `
+            /p:GenerateAppxPackageOnBuild=true `
+            /p:AppxBundle=Always `
+            /p:AppxBundlePlatforms=$plat `
+            /p:PackageCertificateThumbprint="${{ env.CERT_THUMBPRINT }}" `
+            /p:WindowsPackageType=MSIX `
+            /p:AppxPackageSigningEnabled=true `
+            /p:AppxPackageSigningTimestampUrl="http://timestamp.digicert.com" `
+            /p:Version=${{ env.BuildVersion }} `
+            /v:minimal
+
+      # ==================== 列出生成的包（调试用） ====================
+      - name: List generated packages
+        shell: pwsh
+        run: |
+          Write-Host "=== Generated MSIX Packages ==="
+          Get-ChildItem -Path "WinWoL/bin/${{ matrix.arch }}/Release" -Recurse -Include *.msix, *.msixbundle, *.appxbundle | ForEach-Object {
+            Write-Host $_.FullName
+          }
+
+      # ==================== 上传产物 ====================
+      - name: Upload MSIX Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WinWoL-${{ matrix.arch }}-MSIX-v${{ env.BuildVersion }}
+          path: |
+            WinWoL/bin/${{ matrix.arch }}/Release/net8.0-windows*/win-${{ matrix.arch }}/AppPackages/**/WinWoL_*.msixbundle
+            WinWoL/bin/${{ matrix.arch }}/Release/net8.0-windows*/win-${{ matrix.arch }}/AppPackages/**/WinWoL_*.msix
+          if-no-files-found: error
