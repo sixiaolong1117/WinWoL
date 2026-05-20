@@ -14,6 +14,7 @@ namespace WinWoL.Models
         public string SSHCommand { get; set; }
         public string SSHPort { get; set; }
         public string SSHUser { get; set; }
+        public string SSHKeyId { get; set; }
         public string SSHKeyPath { get; set; }
         public string SSHKeyIsOpen { get; set; }
     }

@@ -1,18 +1,21 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Newtonsoft.Json;
-using Windows.Storage.Pickers;
-using Windows.Storage;
 using WinWoL.Models;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using static System.Net.Mime.MediaTypeNames;
+using Windows.ApplicationModel.Resources;
+using WinWoL.Datas;
+using WinWoL.Methods;
 
 namespace WinWoL.Pages.Dialogs
 {
     public sealed partial class AddWoL : ContentDialog
     {
         public WoLModel WoLData { get; private set; }
+        private readonly ResourceLoader resourceLoader = new ResourceLoader();
+        private List<SSHKeyModel> sshKeys = new List<SSHKeyModel>();
+
         public AddWoL(WoLModel wolModel)
         {
             this.InitializeComponent();
@@ -34,7 +37,7 @@ namespace WinWoL.Pages.Dialogs
             SSHPortTextBox.Text = wolModel.SSHPort;
             SSHUserTextBox.Text = wolModel.SSHUser;
             PrivateKeyIsOpenToggleSwitch.IsOn = wolModel.SSHKeyIsOpen == "True";
-            SSHKeyPathTextBox.Text = wolModel.SSHKeyPath;
+            LoadSSHKeys(GetConfiguredSSHKeyId(wolModel));
 
             // 根据是否开启独立的WoL地址
             if (IndependentAddressCheckBox.IsChecked == true)
@@ -60,7 +63,8 @@ namespace WinWoL.Pages.Dialogs
             WoLData.SSHCommand = SSHCommandTextBox.Text;
             WoLData.SSHPort = SSHPortTextBox.Text;
             WoLData.SSHUser = SSHUserTextBox.Text;
-            WoLData.SSHKeyPath = SSHKeyPathTextBox.Text;
+            WoLData.SSHKeyId = GetSelectedSSHKeyId();
+            WoLData.SSHKeyPath = "";
             WoLData.SSHKeyIsOpen = PrivateKeyIsOpenToggleSwitch.IsOn ? "True" : "False";
 
             // 根据是否开启独立的WoL地址
@@ -276,34 +280,84 @@ namespace WinWoL.Pages.Dialogs
         {
             refresh();
         }
-        private async void SelectSSHKeyPath_Click(object sender, RoutedEventArgs e)
+        private async void ImportSSHKey_Click(object sender, RoutedEventArgs e)
         {
-            // 创建一个FileOpenPicker
-            var openPicker = new FileOpenPicker();
-            // 获取当前窗口句柄 (HWND) 
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.m_window);
-            // 使用窗口句柄 (HWND) 初始化FileOpenPicker
-            WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
-
-            // 为FilePicker设置选项
-            openPicker.ViewMode = PickerViewMode.Thumbnail;
-            // 建议打开位置 桌面
-            openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
-            // 文件类型过滤器
-            openPicker.FileTypeFilter.Add("*");
-
-            // 打开选择器供用户选择文件
-            var file = await openPicker.PickSingleFileAsync();
-            string filePath = null;
-            if (file != null)
+            int? sshKeyId = await SSHKeyMethod.ImportKey();
+            if (sshKeyId != null)
             {
-                filePath = file.Path;
+                LoadSSHKeys(sshKeyId.Value.ToString());
             }
-            else
+        }
+
+        private void ConfirmPasteSSHKey_Click(object sender, RoutedEventArgs e)
+        {
+            try
             {
-                filePath = null;
+                int sshKeyId = SSHKeyMethod.SavePrivateKey(SSHKeyNameTextBox.Text, SSHPrivateKeyTextBox.Text);
+                SSHKeyNameTextBox.Text = "";
+                SSHPrivateKeyTextBox.Text = "";
+                PasteSSHKeyError.Visibility = Visibility.Collapsed;
+                PasteSSHKeyFlyout.Hide();
+                LoadSSHKeys(sshKeyId.ToString());
             }
-            SSHKeyPathTextBox.Text = filePath;
+            catch (Exception ex)
+            {
+                PasteSSHKeyError.Text = string.Format(resourceLoader.GetString("PasteSSHKeyError"), ex.Message);
+                PasteSSHKeyError.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void DeleteSSHKey_Click(object sender, RoutedEventArgs e)
+        {
+            if (SSHKeyComboBox.SelectedItem is SSHKeyModel selectedKey)
+            {
+                SQLiteHelper dbHelper = new SQLiteHelper();
+                dbHelper.DeleteSSHKey(selectedKey.Id);
+                LoadSSHKeys("");
+            }
+        }
+
+        private void SSHKeyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DeleteSSHKeyButton.IsEnabled = SSHKeyComboBox.SelectedItem != null;
+        }
+
+        private void LoadSSHKeys(string selectedSSHKeyId)
+        {
+            SQLiteHelper dbHelper = new SQLiteHelper();
+            sshKeys = dbHelper.QuerySSHKeys();
+            SSHKeyComboBox.ItemsSource = sshKeys;
+            SSHKeyComboBox.SelectedItem = null;
+
+            foreach (SSHKeyModel sshKey in sshKeys)
+            {
+                if (sshKey.Id.ToString() == selectedSSHKeyId)
+                {
+                    SSHKeyComboBox.SelectedItem = sshKey;
+                    break;
+                }
+            }
+
+            DeleteSSHKeyButton.IsEnabled = SSHKeyComboBox.SelectedItem != null;
+        }
+
+        private string GetSelectedSSHKeyId()
+        {
+            if (SSHKeyComboBox.SelectedItem is SSHKeyModel selectedKey)
+            {
+                return selectedKey.Id.ToString();
+            }
+            return "";
+        }
+
+        private string GetConfiguredSSHKeyId(WoLModel wolModel)
+        {
+            if (!string.IsNullOrEmpty(wolModel.SSHKeyId))
+            {
+                return wolModel.SSHKeyId;
+            }
+
+            return int.TryParse(wolModel.SSHKeyPath, out _) ? wolModel.SSHKeyPath : "";
         }
     }
 }

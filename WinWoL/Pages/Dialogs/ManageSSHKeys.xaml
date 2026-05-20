@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentDialog
+    x:Class="WinWoL.Pages.Dialogs.ManageSSHKeys"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinWoL.Pages.Dialogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Width="360">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Uid="ManageSSHKeysDialogTitle"
+            Grid.Row="0"
+            Margin="0,0,0,12"
+            HorizontalAlignment="Center"
+            FontSize="24" />
+
+        <Grid Grid.Row="1">
+            <TextBlock
+                x:Name="EmptySSHKeyTips"
+                x:Uid="EmptySSHKeyTips"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="{ThemeResource SystemControlBackgroundBaseMediumBrush}"
+                TextWrapping="Wrap" />
+            <ListView
+                x:Name="SSHKeyListView"
+                MaxHeight="320"
+                SelectionChanged="SSHKeyListView_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Width="320"
+                            Padding="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                FontWeight="SemiBold"
+                                Text="{Binding Name}"
+                                TextWrapping="Wrap" />
+                            <TextBlock
+                                Grid.Row="1"
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlBackgroundBaseMediumBrush}"
+                                Text="{Binding CreatedAt}"
+                                TextWrapping="Wrap" />
+                            <TextBlock
+                                Grid.Row="2"
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlBackgroundBaseMediumBrush}"
+                                Text="{Binding Fingerprint}"
+                                TextWrapping="Wrap" />
+                            <TextBlock
+                                Grid.Row="3"
+                                FontSize="12"
+                                Foreground="{ThemeResource SystemControlBackgroundBaseMediumBrush}"
+                                Text="{Binding PublicKey}"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="NoWrap" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,12,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                x:Name="ImportSSHKeyButton"
+                x:Uid="ImportSSHKeyButton"
+                Margin="0,0,8,0"
+                Click="ImportSSHKey_Click" />
+            <Button
+                x:Name="PasteSSHKeyButton"
+                x:Uid="PasteSSHKeyButton"
+                Margin="0,0,8,0">
+                <Button.Flyout>
+                    <Flyout x:Name="PasteSSHKeyFlyout">
+                        <StackPanel Width="320">
+                            <TextBox
+                                x:Name="SSHKeyNameTextBox"
+                                x:Uid="SSHKeyNameTextBox"
+                                Margin="0,0,0,8" />
+                            <TextBox
+                                x:Name="SSHPrivateKeyTextBox"
+                                x:Uid="SSHPrivateKeyTextBox"
+                                Height="220"
+                                AcceptsReturn="True"
+                                TextWrapping="NoWrap" />
+                            <TextBlock
+                                x:Name="PasteSSHKeyError"
+                                Margin="0,8,0,0"
+                                Foreground="IndianRed"
+                                TextWrapping="Wrap"
+                                Visibility="Collapsed" />
+                            <Button
+                                x:Uid="PasteSSHKeyConfirmButton"
+                                Margin="0,8,0,0"
+                                HorizontalAlignment="Right"
+                                Click="ConfirmPasteSSHKey_Click" />
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button
+                x:Name="DeleteSSHKeyButton"
+                x:Uid="DeleteSSHKeyButton"
+                Click="DeleteSSHKey_Click" />
+        </StackPanel>
+    </Grid>
+</ContentDialog>

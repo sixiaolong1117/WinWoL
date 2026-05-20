@@ -1,8 +1,11 @@
-﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Windows.Storage.Pickers;
+using Windows.ApplicationModel.Resources;
+using WinWoL.Datas;
+using WinWoL.Methods;
 using WinWoL.Models;
 
 namespace WinWoL.Pages.Dialogs
@@ -10,13 +13,16 @@ namespace WinWoL.Pages.Dialogs
     public sealed partial class AddSSH : ContentDialog
     {
         public SSHModel SSHData { get; private set; }
+        private readonly ResourceLoader resourceLoader = new ResourceLoader();
+        private List<SSHKeyModel> sshKeys = new List<SSHKeyModel>();
+
         public AddSSH(SSHModel sshModel)
         {
             this.InitializeComponent();
             PrimaryButtonClick += MyDialog_PrimaryButtonClick;
             SecondaryButtonClick += MyDialog_SecondaryButtonClick;
 
-            // 初始化Dialog中的字段，使用传入的WoLModel对象的属性
+            // 初始化Dialog中的字段，使用传入的SSHModel对象的属性
             SSHData = sshModel;
             ConfigNameTextBox.Text = sshModel.Name;
             IpAddressTextBox.Text = sshModel.IPAddress;
@@ -24,10 +30,11 @@ namespace WinWoL.Pages.Dialogs
             SSHPortTextBox.Text = sshModel.SSHPort;
             SSHUserTextBox.Text = sshModel.SSHUser;
             PrivateKeyIsOpenToggleSwitch.IsOn = sshModel.SSHKeyIsOpen == "True";
-            SSHKeyPathTextBox.Text = sshModel.SSHKeyPath;
+            LoadSSHKeys(GetConfiguredSSHKeyId(sshModel));
 
             refresh();
         }
+
         private void MyDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             // 在"确定"按钮点击事件中保存用户输入的内容
@@ -36,7 +43,8 @@ namespace WinWoL.Pages.Dialogs
             SSHData.SSHCommand = SSHCommandTextBox.Text;
             SSHData.SSHPort = SSHPortTextBox.Text;
             SSHData.SSHUser = SSHUserTextBox.Text;
-            SSHData.SSHKeyPath = SSHKeyPathTextBox.Text;
+            SSHData.SSHKeyId = GetSelectedSSHKeyId();
+            SSHData.SSHKeyPath = "";
             SSHData.SSHKeyIsOpen = PrivateKeyIsOpenToggleSwitch.IsOn ? "True" : "False";
         }
 
@@ -44,11 +52,13 @@ namespace WinWoL.Pages.Dialogs
         {
             // 在"取消"按钮点击事件中不做任何操作
         }
+
         private void refresh()
         {
             // 是否启用功能
             PrivateKeyIsOpen();
         }
+
         private void PrivateKeyIsOpen()
         {
             if (PrivateKeyIsOpenToggleSwitch.IsOn == true)
@@ -62,49 +72,104 @@ namespace WinWoL.Pages.Dialogs
                 SSHPasswordBox.Visibility = Visibility.Visible;
             }
         }
+
         private void privateKeyIsOpen_Toggled(object sender, RoutedEventArgs e)
         {
             refresh();
         }
-        private async void SelectSSHKeyPath_Click(object sender, RoutedEventArgs e)
+
+        private async void ImportSSHKey_Click(object sender, RoutedEventArgs e)
         {
-            // 创建一个FileOpenPicker
-            var openPicker = new FileOpenPicker();
-            // 获取当前窗口句柄 (HWND) 
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.m_window);
-            // 使用窗口句柄 (HWND) 初始化FileOpenPicker
-            WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
-
-            // 为FilePicker设置选项
-            openPicker.ViewMode = PickerViewMode.Thumbnail;
-            // 建议打开位置 桌面
-            openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
-            // 文件类型过滤器
-            openPicker.FileTypeFilter.Add("*");
-
-            // 打开选择器供用户选择文件
-            var file = await openPicker.PickSingleFileAsync();
-            string filePath = null;
-            if (file != null)
+            int? sshKeyId = await SSHKeyMethod.ImportKey();
+            if (sshKeyId != null)
             {
-                filePath = file.Path;
+                LoadSSHKeys(sshKeyId.Value.ToString());
             }
-            else
-            {
-                filePath = null;
-            }
-            SSHKeyPathTextBox.Text = filePath;
         }
+
+        private void ConfirmPasteSSHKey_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int sshKeyId = SSHKeyMethod.SavePrivateKey(SSHKeyNameTextBox.Text, SSHPrivateKeyTextBox.Text);
+                SSHKeyNameTextBox.Text = "";
+                SSHPrivateKeyTextBox.Text = "";
+                PasteSSHKeyError.Visibility = Visibility.Collapsed;
+                PasteSSHKeyFlyout.Hide();
+                LoadSSHKeys(sshKeyId.ToString());
+            }
+            catch (Exception ex)
+            {
+                PasteSSHKeyError.Text = string.Format(resourceLoader.GetString("PasteSSHKeyError"), ex.Message);
+                PasteSSHKeyError.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void DeleteSSHKey_Click(object sender, RoutedEventArgs e)
+        {
+            if (SSHKeyComboBox.SelectedItem is SSHKeyModel selectedKey)
+            {
+                SQLiteHelper dbHelper = new SQLiteHelper();
+                dbHelper.DeleteSSHKey(selectedKey.Id);
+                LoadSSHKeys("");
+            }
+        }
+
+        private void SSHKeyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DeleteSSHKeyButton.IsEnabled = SSHKeyComboBox.SelectedItem != null;
+        }
+
+        private void LoadSSHKeys(string selectedSSHKeyId)
+        {
+            SQLiteHelper dbHelper = new SQLiteHelper();
+            sshKeys = dbHelper.QuerySSHKeys();
+            SSHKeyComboBox.ItemsSource = sshKeys;
+            SSHKeyComboBox.SelectedItem = null;
+
+            foreach (SSHKeyModel sshKey in sshKeys)
+            {
+                if (sshKey.Id.ToString() == selectedSSHKeyId)
+                {
+                    SSHKeyComboBox.SelectedItem = sshKey;
+                    break;
+                }
+            }
+
+            DeleteSSHKeyButton.IsEnabled = SSHKeyComboBox.SelectedItem != null;
+        }
+
+        private string GetSelectedSSHKeyId()
+        {
+            if (SSHKeyComboBox.SelectedItem is SSHKeyModel selectedKey)
+            {
+                return selectedKey.Id.ToString();
+            }
+            return "";
+        }
+
+        private string GetConfiguredSSHKeyId(SSHModel sshModel)
+        {
+            if (!string.IsNullOrEmpty(sshModel.SSHKeyId))
+            {
+                return sshModel.SSHKeyId;
+            }
+
+            return int.TryParse(sshModel.SSHKeyPath, out _) ? sshModel.SSHKeyPath : "";
+        }
+
         private void IPAddressTextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             IPAddressTextClean(textBox);
         }
+
         private void IPAddressTextPaste(object sender, TextControlPasteEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             IPAddressTextClean(textBox);
         }
+
         private void IPAddressTextClean(TextBox textBox)
         {
             string input = textBox.Text;
@@ -124,16 +189,19 @@ namespace WinWoL.Pages.Dialogs
                 textBox.SelectionStart = textBox.Text.Length;
             }
         }
+
         private void PortTextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             PortTextClean(textBox);
         }
+
         private void PortTextPaste(object sender, TextControlPasteEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             PortTextClean(textBox);
         }
+
         private void PortTextClean(TextBox textBox)
         {
             string input = textBox.Text;

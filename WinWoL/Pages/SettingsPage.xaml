@@ -118,6 +118,51 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                x:Uid="SSHKeySetting"
+                Grid.Row="0"
+                Margin="24,18,0,8" />
+            <Grid
+                Grid.Row="1"
+                Margin="24,0,24,0"
+                Padding="28,16,28,16"
+                Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
+                BorderThickness="0"
+                CornerRadius="4,4,4,4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" MinWidth="60" />
+                </Grid.ColumnDefinitions>
+                <FontIcon
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe Fluent Icons"
+                    Glyph="&#xE72E;" />
+                <TextBlock
+                    x:Uid="ManageSSHKeysSetting"
+                    Grid.Column="1"
+                    Margin="16,0,0,0"
+                    VerticalAlignment="Center" />
+                <Button
+                    x:Uid="ManageSSHKeysButton"
+                    Grid.Column="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Click="ManageSSHKeysButton_Click" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

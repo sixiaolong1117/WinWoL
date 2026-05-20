@@ -127,15 +127,8 @@
                         VerticalAlignment="Center"
                         NavigateUri="https://github.com/SIXiaolong1117/WinWoL/issues" />
                     <HyperlinkButton
-                        x:Uid="AboutWiki"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        NavigateUri="https://about.sixiaolong.win/Project/Remote-Toolbox.html" />
-                    <HyperlinkButton
                         x:Uid="AboutRepo"
-                        Grid.Row="3"
+                        Grid.Row="2"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
@@ -253,13 +246,6 @@
                             VerticalAlignment="Center"
                             Content="Github"
                             NavigateUri="https://github.sixiaolong.win/" />
-                        <HyperlinkButton
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Content="Twitter"
-                            NavigateUri="https://twitter.sixiaolong.win/" />
                     </Grid>
                 </Grid>
 

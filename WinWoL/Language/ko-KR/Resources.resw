@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -62,333 +62,333 @@
     <value>Alipay</value>
   </data>
   <data name="AboutAuthor.Text" xml:space="preserve">
-    <value>Author</value>
+    <value>저자</value>
   </data>
   <data name="AboutHeader.Text" xml:space="preserve">
-    <value>About</value>
+    <value>정보</value>
   </data>
   <data name="AboutMITLicense.Content" xml:space="preserve">
-    <value>MIT License</value>
+    <value>MIT 라이선스</value>
   </data>
   <data name="AboutNSRightTip.Text" xml:space="preserve">
-    <value>© 2024 SI Xiaolong. Under MIT License.</value>
+    <value>© 2024 시샤오롱. MIT 라이선스에 따라.</value>
   </data>
   <data name="AboutReference.Text" xml:space="preserve">
-    <value>Dependencies</value>
+    <value>종속성</value>
   </data>
   <data name="AboutRepo.Content" xml:space="preserve">
-    <value>Repository</value>
+    <value>저장소</value>
   </data>
   <data name="AboutSponsor.Text" xml:space="preserve">
-    <value>Sponsor</value>
+    <value>스폰서</value>
   </data>
   <data name="AboutWePay.Content" xml:space="preserve">
     <value>WeChat</value>
   </data>
   <data name="AboutWoL.Text" xml:space="preserve">
-    <value>About</value>
+    <value>개요</value>
   </data>
   <data name="AboutWoLRight.Text" xml:space="preserve">
-    <value>Remote Toolbox</value>
+    <value>원격 도구함</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
+    <value>추가</value>
   </data>
   <data name="AddConfig.Content" xml:space="preserve">
-    <value>Add</value>
+    <value>추가</value>
   </data>
   <data name="AddConfig.Label" xml:space="preserve">
-    <value>Add</value>
+    <value>추가</value>
   </data>
   <data name="AddConfigDialogTitle.Text" xml:space="preserve">
-    <value>Add configuration</value>
+    <value>설정 추가</value>
   </data>
   <data name="AppearanceSetting.Text" xml:space="preserve">
-    <value>Appearance</value>
+    <value>모양</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
-    <value>Remote Toolbox</value>
+    <value>원격 도구함</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>취소</value>
   </data>
   <data name="Change" xml:space="preserve">
-    <value>Update</value>
+    <value>업데이트</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>확인</value>
   </data>
   <data name="DatabaseSetting.Text" xml:space="preserve">
-    <value>Database</value>
+    <value>데이터베이스</value>
   </data>
   <data name="SSHKeySetting.Text" xml:space="preserve">
-    <value>SSH Keys</value>
+    <value>SSH 키</value>
   </data>
   <data name="ManageSSHKeysSetting.Text" xml:space="preserve">
-    <value>Manage Built-in SSH Keys</value>
+    <value>내장 SSH 키 관리</value>
   </data>
   <data name="ManageSSHKeysButton.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>관리</value>
   </data>
   <data name="ManageSSHKeysDialogTitle.Text" xml:space="preserve">
-    <value>SSH Key Management</value>
+    <value>SSH 키 관리</value>
   </data>
   <data name="EmptySSHKeyTips.Text" xml:space="preserve">
-    <value>No SSH keys imported yet.</value>
+    <value>아직 SSH 키를 가져오지 않았습니다.</value>
   </data>
   <data name="DialogConfigNameTextBox.Header" xml:space="preserve">
-    <value>Name</value>
+    <value>이름</value>
   </data>
   <data name="DialogConfigNameTextBox.PlaceholderText" xml:space="preserve">
-    <value>Display name</value>
+    <value>표시 이름</value>
   </data>
   <data name="DialogGeneral.Text" xml:space="preserve">
-    <value>General</value>
+    <value>일반</value>
   </data>
   <data name="DialogIpAddressTextBox.Header" xml:space="preserve">
-    <value>Host</value>
+    <value>호스트</value>
   </data>
   <data name="DialogIpAddressTextBox.PlaceholderText" xml:space="preserve">
-    <value>Domain or IP</value>
+    <value>도메인 또는 IP</value>
   </data>
   <data name="DialogRDPHeader.Text" xml:space="preserve">
-    <value>RDP Configuration</value>
+    <value>RDP 설정</value>
   </data>
   <data name="DialogSSHCommandTextBox.Header" xml:space="preserve">
-    <value>SSH Command</value>
+    <value>SSH 명령어</value>
   </data>
   <data name="DialogSSHPortTextBox.Header" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH 포트</value>
   </data>
   <data name="DialogSSHShutdownHeader.Text" xml:space="preserve">
-    <value>SSH Shutdown</value>
+    <value>SSH 종료</value>
   </data>
   <data name="DialogSSHUserTextBox.Header" xml:space="preserve">
-    <value>SSH User</value>
+    <value>SSH 사용자</value>
   </data>
   <data name="DialogUsingSSHKeyTextBox.Text" xml:space="preserve">
-    <value>Key Auth</value>
+    <value>키 인증</value>
   </data>
   <data name="DialogWoLHeader.Text" xml:space="preserve">
-    <value>WoL Configuration</value>
+    <value>WoL 설정</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Export</value>
+    <value>내보내기</value>
   </data>
   <data name="FeedbackBugs.Content" xml:space="preserve">
-    <value>Report Issue</value>
+    <value>문제 보고</value>
   </data>
   <data name="MoveForward" xml:space="preserve">
-    <value>Move Forward</value>
+    <value>위로 이동</value>
   </data>
   <data name="HideConfig.Label" xml:space="preserve">
-    <value>Show/Hide</value>
+    <value>표시/숨기기</value>
   </data>
   <data name="ImportConfig.Content" xml:space="preserve">
-    <value>Import</value>
+    <value>가져오기</value>
   </data>
   <data name="ImportConfig.Label" xml:space="preserve">
-    <value>Import</value>
+    <value>가져오기</value>
   </data>
   <data name="IndependentAddressCheckBox.Content" xml:space="preserve">
-    <value>Independent WoL Address</value>
+    <value>독립 WoL 주소</value>
   </data>
   <data name="IndependentAddressCheckBoxTips.Text" xml:space="preserve">
-    <value>You can fill in the broadcast address as the independent WoL address.</value>
+    <value>독립 WoL 주소에는 브로드캐스트 주소를 설정할 수 있습니다.</value>
   </data>
   <data name="IndependentAddressTextBox.Header" xml:space="preserve">
-    <value>WoL Address</value>
+    <value>WoL 주소</value>
   </data>
   <data name="IPAddress.Text" xml:space="preserve">
-    <value>IP Address</value>
+    <value>IP 주소</value>
   </data>
   <data name="LanguageSetting.Text" xml:space="preserve">
-    <value>Language</value>
+    <value>언어</value>
   </data>
   <data name="MacAddressTextBox.Header" xml:space="preserve">
-    <value>MAC Address</value>
+    <value>MAC 주소</value>
   </data>
   <data name="Overlay" xml:space="preserve">
-    <value>Overwrite</value>
+    <value>덮어쓰기</value>
   </data>
   <data name="PingRefHeader.Text" xml:space="preserve">
-    <value>Ping Test</value>
+    <value>Ping 테스트</value>
   </data>
   <data name="PingTips.Text" xml:space="preserve">
-    <value>Note: The Magic Packet for Wake-on-LAN is sent via UDP. TCP connectivity does not imply UDP reachability.</value>
+    <value>참고: Wake-on-LAN의 매직 패킷은 UDP를 통해 전송됩니다. TCP 연결이 가능하더라도 UDP 연결 가능성을 보장하지 않습니다.</value>
   </data>
   <data name="PRIVACYLink.Content" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>개인정보 처리방침</value>
   </data>
   <data name="RDPIPPortTextBox.Header" xml:space="preserve">
-    <value>RDP Port</value>
+    <value>RDP 포트</value>
   </data>
   <data name="RDPPort.Text" xml:space="preserve">
-    <value>RDP Port</value>
+    <value>RDP 포트</value>
   </data>
   <data name="ResetDatabase.Content" xml:space="preserve">
-    <value>Reset Database</value>
+    <value>데이터베이스 초기화</value>
   </data>
   <data name="ResetDatabaseSetting.Text" xml:space="preserve">
-    <value>Reset Database</value>
+    <value>데이터베이스 초기화</value>
   </data>
   <data name="ResetDatabaseTips.Subtitle" xml:space="preserve">
-    <value>This will permanently delete all your configuration data and cannot be undone!</value>
+    <value>모든 설정 데이터가 영구적으로 삭제되며 복구할 수 없습니다!</value>
   </data>
   <data name="ResetDatabaseTips.Title" xml:space="preserve">
-    <value>Reset Database?</value>
+    <value>데이터베이스를 초기화하시겠습니까?</value>
   </data>
   <data name="RunSSHScript" xml:space="preserve">
-    <value>Run SSH Script</value>
+    <value>SSH 스크립트 실행</value>
   </data>
   <data name="SelectSSHKeyPath.Content" xml:space="preserve">
-    <value>Browse…</value>
+    <value>찾아보기…</value>
   </data>
   <data name="ImportSSHKeyButton.Content" xml:space="preserve">
-    <value>Import Key</value>
+    <value>키 가져오기</value>
   </data>
   <data name="PasteSSHKeyButton.Content" xml:space="preserve">
-    <value>Paste Key</value>
+    <value>키 붙여넣기</value>
   </data>
   <data name="PasteSSHKeyConfirmButton.Content" xml:space="preserve">
-    <value>Confirm</value>
+    <value>확인</value>
   </data>
   <data name="DeleteSSHKeyButton.Content" xml:space="preserve">
-    <value>Delete Key</value>
+    <value>키 삭제</value>
   </data>
   <data name="SettingsHeader.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>설정</value>
   </data>
   <data name="SponsorMe.Text" xml:space="preserve">
-    <value>Sponsor Me:</value>
+    <value>후원하기:</value>
   </data>
   <data name="SSHCommandTextBox.Header" xml:space="preserve">
-    <value>SSH Shutdown Command</value>
+    <value>SSH 종료 명령어</value>
   </data>
   <data name="SSHHeader" xml:space="preserve">
-    <value>SSH Shortcuts</value>
+    <value>SSH 바로가기</value>
   </data>
   <data name="SSHKeyPathTextBox.Header" xml:space="preserve">
-    <value>SSH Key Path</value>
+    <value>SSH 키 경로</value>
   </data>
   <data name="SSHKeyComboBox.Header" xml:space="preserve">
-    <value>SSH Key</value>
+    <value>SSH 키</value>
   </data>
   <data name="PasteSSHKeyDialogTitle.Text" xml:space="preserve">
-    <value>Paste SSH Private Key</value>
+    <value>SSH 개인 키 붙여넣기</value>
   </data>
   <data name="SSHKeyNameTextBox.Header" xml:space="preserve">
-    <value>Key Name</value>
+    <value>키 이름</value>
   </data>
   <data name="SSHKeyNameTextBox.PlaceholderText" xml:space="preserve">
-    <value>Leave blank to use the key comment</value>
+    <value>비워두면 키 주석 사용</value>
   </data>
   <data name="SSHPrivateKeyTextBox.Header" xml:space="preserve">
-    <value>Private Key</value>
+    <value>개인 키</value>
   </data>
   <data name="SSHPrivateKeyTextBox.PlaceholderText" xml:space="preserve">
     <value>-----BEGIN OPENSSH PRIVATE KEY-----</value>
   </data>
   <data name="PasteSSHKeyError" xml:space="preserve">
-    <value>Could not parse SSH private key: {0}</value>
+    <value>SSH 개인 키를 분석할 수 없습니다: {0}</value>
   </data>
   <data name="SSHKeyTips1.Text" xml:space="preserve">
-    <value>Private keys are imported into the app's built-in key store, so SSH no longer depends on the original file path.</value>
+    <value>개인 키는 앱 내장 키 저장소로 가져와지므로 SSH가 더 이상 원래 파일 경로에 의존하지 않습니다.</value>
   </data>
   <data name="SSHKeyTips2.Text" xml:space="preserve">
-    <value>Key content is encrypted using the current Windows user's data protection scope.</value>
+    <value>키 내용은 현재 Windows 사용자의 데이터 보호 범위로 암호화됩니다.</value>
   </data>
   <data name="SSHPasswordBox.Header" xml:space="preserve">
-    <value>SSH Password</value>
+    <value>SSH 비밀번호</value>
   </data>
   <data name="SSHPasswordTips1.Text" xml:space="preserve">
-    <value>SSH password will be requested before sending. The application does not store your password in any form.</value>
+    <value>전송 전에 SSH 비밀번호를 요청합니다. 애플리케이션은 비밀번호를 어떠한 형태로도 저장하지 않습니다.</value>
   </data>
   <data name="SSHPasswordTips2.Text" xml:space="preserve">
-    <value>Note: SSH password login is not a secure option. We recommend using key-based authentication instead.</value>
+    <value>참고: SSH 비밀번호 로그인은 안전한 방법이 아닙니다. 키 인증을 사용하는 것을 권장합니다.</value>
   </data>
   <data name="SSHPort.Text" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH 포트</value>
   </data>
   <data name="SSHPortTextBox.Header" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH 포트</value>
   </data>
   <data name="SSHResponse.Title" xml:space="preserve">
-    <value>SSH Results:</value>
+    <value>SSH 결과:</value>
   </data>
   <data name="SSHShortcutTips.Text" xml:space="preserve">
-    <value>Double-click to execute, right-click for context menu</value>
+    <value>더블클릭으로 실행, 우클릭으로 메뉴 열기</value>
   </data>
   <data name="SSHShutdownCMD.Text" xml:space="preserve">
-    <value>SSH Shutdown Command</value>
+    <value>SSH 종료 명령어</value>
   </data>
   <data name="SSHShutdownPort.Text" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH 포트</value>
   </data>
   <data name="SSHUserTextBox.Header" xml:space="preserve">
-    <value>SSH User</value>
+    <value>SSH 사용자</value>
   </data>
   <data name="TCPingRDPHeader.Text" xml:space="preserve">
-    <value>TCPing RDP Port</value>
+    <value>TCPing RDP 포트</value>
   </data>
   <data name="TCPingSSHHeader.Text" xml:space="preserve">
-    <value>TCPing SSH Port</value>
+    <value>TCPing SSH 포트</value>
   </data>
   <data name="TCPingWoLHeader.Text" xml:space="preserve">
-    <value>TCPing WoL Port</value>
+    <value>TCPing WoL 포트</value>
   </data>
   <data name="ThemeSetting.Text" xml:space="preserve">
-    <value>App Theme</value>
+    <value>테마</value>
   </data>
   <data name="WoLAddress.Text" xml:space="preserve">
-    <value>WoL Address</value>
+    <value>WoL 주소</value>
   </data>
   <data name="WoLHeader" xml:space="preserve">
-    <value>Remote Tools</value>
+    <value>원격 도구</value>
   </data>
   <data name="WoLPort.Text" xml:space="preserve">
-    <value>WoL Port</value>
+    <value>WoL 포트</value>
   </data>
   <data name="WoLPortTextBox.Header" xml:space="preserve">
-    <value>WoL Port</value>
+    <value>WoL 포트</value>
   </data>
   <data name="WoLTips1.Text" xml:space="preserve">
-    <value>Double-click to wake, right-click for context menu</value>
+    <value>더블클릭으로 실행, 우클릭으로 메뉴 열기</value>
   </data>
   <data name="WoLTips2.Text" xml:space="preserve">
-    <value>Selected configuration details</value>
+    <value>선택한 설정 상세 정보</value>
   </data>
   <data name="MoveBackward" xml:space="preserve">
-    <value>Move Backward</value>
+    <value>아래로 이동</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>편집</value>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>복제</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>삭제</value>
   </data>
   <data name="MagicPacketSentSuccessfully" xml:space="preserve">
-    <value>Magic Packet Sent Successfully!</value>
+    <value>매직 패킷 전송 성공!</value>
   </data>
   <data name="MagicPacketSendingFailed" xml:space="preserve">
-    <value>Magic Packet Sending Failed!</value>
+    <value>매직 패킷 전송 실패!</value>
   </data>
   <data name="MagicPacketSentSuccessfullySubtitle" xml:space="preserve">
-    <value>The Magic Packet has been sent successfully over UDP.</value>
+    <value>매직 패킷이 UDP를 통해 성공적으로 전송되었습니다.</value>
   </data>
   <data name="MagicPacketSendingFailedSubtitle" xml:space="preserve">
-    <value>Please check your configuration.</value>
+    <value>설정 내용을 확인해 주세요.</value>
   </data>
   <data name="WoL" xml:space="preserve">
     <value>Wake on LAN</value>
   </data>
   <data name="RDP" xml:space="preserve">
-    <value>Remote Desktop</value>
+    <value>원격 데스크톱</value>
   </data>
   <data name="SSHShutdown" xml:space="preserve">
-    <value>SSH Shutdown</value>
+    <value>SSH 종료</value>
   </data>
 </root>

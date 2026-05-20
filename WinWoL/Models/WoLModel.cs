@@ -12,6 +12,7 @@
         public string SSHCommand { get; set; }
         public string SSHPort { get; set; }
         public string SSHUser { get; set; }
+        public string SSHKeyId { get; set; }
         public string SSHKeyPath { get; set; }
         public string WoLIsOpen { get; set; }
         public string RDPIsOpen { get; set; }

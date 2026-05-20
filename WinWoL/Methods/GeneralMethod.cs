@@ -1,21 +1,21 @@
-﻿using Renci.SshNet;
+using Renci.SshNet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
+using WinWoL.Datas;
+using WinWoL.Models;
 
 namespace WinWoL.Methods
 {
     public class GeneralMethod
     {
         // SSH执行
-        public static string SendSSHCommand(string sshCommand, string sshHost, string sshPort, string sshUser, string sshPasswd, string sshKey, string privateKeyIsOpen)
+        public static string SendSSHCommand(string sshCommand, string sshHost, string sshPort, string sshUser, string sshPasswd, string sshKeyId, string privateKeyIsOpen)
         {
             try
             {
                 bool usePrivateKey = string.Equals(privateKeyIsOpen, "True", StringComparison.OrdinalIgnoreCase);
-                SshClient sshClient = InitializeSshClient(sshHost, int.Parse(sshPort), sshUser, sshPasswd, sshKey, usePrivateKey);
+                SshClient sshClient = InitializeSshClient(sshHost, int.Parse(sshPort), sshUser, sshPasswd, sshKeyId, usePrivateKey);
 
                 if (sshClient != null)
                 {
@@ -31,27 +31,40 @@ namespace WinWoL.Methods
                 return "SSH 操作失败：" + ex.Message;
             }
         }
+
         // SSH初始化
-        private static SshClient InitializeSshClient(string sshHost, int sshPort, string sshUser, string sshPasswd, string sshKey, bool usePrivateKey)
+        private static SshClient InitializeSshClient(string sshHost, int sshPort, string sshUser, string sshPasswd, string sshKeyId, bool usePrivateKey)
         {
-            try
+            if (usePrivateKey)
             {
-                if (usePrivateKey)
-                {
-                    PrivateKeyFile privateKeyFile = new PrivateKeyFile(sshKey);
-                    ConnectionInfo connectionInfo = new ConnectionInfo(sshHost, sshPort, sshUser, new PrivateKeyAuthenticationMethod(sshUser, new PrivateKeyFile[] { privateKeyFile }));
-                    return new SshClient(connectionInfo);
-                }
-                else
-                {
-                    return new SshClient(sshHost, sshPort, sshUser, sshPasswd);
-                }
+                PrivateKeyFile privateKeyFile = LoadPrivateKeyFile(sshKeyId);
+                ConnectionInfo connectionInfo = new ConnectionInfo(sshHost, sshPort, sshUser, new PrivateKeyAuthenticationMethod(sshUser, new PrivateKeyFile[] { privateKeyFile }));
+                return new SshClient(connectionInfo);
             }
-            catch
+            else
             {
-                return null;
+                return new SshClient(sshHost, sshPort, sshUser, sshPasswd);
             }
         }
+
+        private static PrivateKeyFile LoadPrivateKeyFile(string sshKeyId)
+        {
+            if (!int.TryParse(sshKeyId, out int keyId))
+            {
+                throw new InvalidOperationException("未选择可用的 SSH 密钥。");
+            }
+
+            SQLiteHelper dbHelper = new SQLiteHelper();
+            SSHKeyModel sshKey = dbHelper.GetSSHKeyById(keyId);
+            if (sshKey == null || string.IsNullOrWhiteSpace(sshKey.PrivateKey))
+            {
+                throw new InvalidOperationException("未找到可用的 SSH 密钥。");
+            }
+
+            MemoryStream privateKeyStream = new MemoryStream(Encoding.UTF8.GetBytes(sshKey.PrivateKey));
+            return new PrivateKeyFile(privateKeyStream);
+        }
+
         // SSH返回
         private static string ExecuteSshCommand(SshClient sshClient, string sshCommand)
         {

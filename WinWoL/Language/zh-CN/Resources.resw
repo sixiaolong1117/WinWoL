@@ -144,9 +144,6 @@
   <data name="AboutWePay.Content" xml:space="preserve">
     <value>微信</value>
   </data>
-  <data name="AboutWiki.Content" xml:space="preserve">
-    <value>使用教程</value>
-  </data>
   <data name="AboutWoL.Text" xml:space="preserve">
     <value>关于</value>
   </data>
@@ -185,6 +182,21 @@
   </data>
   <data name="DatabaseSetting.Text" xml:space="preserve">
     <value>数据库</value>
+  </data>
+  <data name="SSHKeySetting.Text" xml:space="preserve">
+    <value>SSH 密钥</value>
+  </data>
+  <data name="ManageSSHKeysSetting.Text" xml:space="preserve">
+    <value>管理内置 SSH 密钥</value>
+  </data>
+  <data name="ManageSSHKeysButton.Content" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="ManageSSHKeysDialogTitle.Text" xml:space="preserve">
+    <value>SSH 密钥管理</value>
+  </data>
+  <data name="EmptySSHKeyTips.Text" xml:space="preserve">
+    <value>还没有导入 SSH 密钥。</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
@@ -318,6 +330,18 @@
   <data name="SelectSSHKeyPath.Content" xml:space="preserve">
     <value>选择…</value>
   </data>
+  <data name="ImportSSHKeyButton.Content" xml:space="preserve">
+    <value>导入密钥</value>
+  </data>
+  <data name="PasteSSHKeyButton.Content" xml:space="preserve">
+    <value>粘贴密钥</value>
+  </data>
+  <data name="PasteSSHKeyConfirmButton.Content" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="DeleteSSHKeyButton.Content" xml:space="preserve">
+    <value>删除密钥</value>
+  </data>
   <data name="SettingsHeader.Text" xml:space="preserve">
     <value>设置</value>
   </data>
@@ -333,11 +357,32 @@
   <data name="SSHKeyPathTextBox.Header" xml:space="preserve">
     <value>SSH Key 路径</value>
   </data>
+  <data name="SSHKeyComboBox.Header" xml:space="preserve">
+    <value>SSH 密钥</value>
+  </data>
+  <data name="PasteSSHKeyDialogTitle.Text" xml:space="preserve">
+    <value>粘贴 SSH 私钥</value>
+  </data>
+  <data name="SSHKeyNameTextBox.Header" xml:space="preserve">
+    <value>密钥名称</value>
+  </data>
+  <data name="SSHKeyNameTextBox.PlaceholderText" xml:space="preserve">
+    <value>留空时自动使用密钥注释</value>
+  </data>
+  <data name="SSHPrivateKeyTextBox.Header" xml:space="preserve">
+    <value>私钥内容</value>
+  </data>
+  <data name="SSHPrivateKeyTextBox.PlaceholderText" xml:space="preserve">
+    <value>-----BEGIN OPENSSH PRIVATE KEY-----</value>
+  </data>
+  <data name="PasteSSHKeyError" xml:space="preserve">
+    <value>无法解析 SSH 私钥：{0}</value>
+  </data>
   <data name="SSHKeyTips1.Text" xml:space="preserve">
-    <value>仅支持 OpenSSH 和 ssh.com 格式的 RSA 和 DSA 私钥。</value>
+    <value>私钥会导入到应用内置密钥库，SSH 执行时不再依赖原始文件路径。</value>
   </data>
   <data name="SSHKeyTips2.Text" xml:space="preserve">
-    <value>此应用程序仅记录您的密钥路径，并不存储其内容。</value>
+    <value>密钥内容会使用当前 Windows 用户的数据保护机制加密保存。</value>
   </data>
   <data name="SSHPasswordBox.Header" xml:space="preserve">
     <value>SSH 密码</value>

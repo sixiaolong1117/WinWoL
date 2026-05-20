@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -62,333 +62,333 @@
     <value>Alipay</value>
   </data>
   <data name="AboutAuthor.Text" xml:space="preserve">
-    <value>Author</value>
+    <value>作者</value>
   </data>
   <data name="AboutHeader.Text" xml:space="preserve">
-    <value>About</value>
+    <value>情報</value>
   </data>
   <data name="AboutMITLicense.Content" xml:space="preserve">
-    <value>MIT License</value>
+    <value>MIT ライセンス</value>
   </data>
   <data name="AboutNSRightTip.Text" xml:space="preserve">
-    <value>© 2024 SI Xiaolong. Under MIT License.</value>
+    <value>© 2024 司晓龙. MIT ライセンスに基づく。</value>
   </data>
   <data name="AboutReference.Text" xml:space="preserve">
-    <value>Dependencies</value>
+    <value>依存関係</value>
   </data>
   <data name="AboutRepo.Content" xml:space="preserve">
-    <value>Repository</value>
+    <value>リポジトリ</value>
   </data>
   <data name="AboutSponsor.Text" xml:space="preserve">
-    <value>Sponsor</value>
+    <value>スポンサー</value>
   </data>
   <data name="AboutWePay.Content" xml:space="preserve">
     <value>WeChat</value>
   </data>
   <data name="AboutWoL.Text" xml:space="preserve">
-    <value>About</value>
+    <value>概要</value>
   </data>
   <data name="AboutWoLRight.Text" xml:space="preserve">
-    <value>Remote Toolbox</value>
+    <value>リモートツールボックス</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
+    <value>追加</value>
   </data>
   <data name="AddConfig.Content" xml:space="preserve">
-    <value>Add</value>
+    <value>追加</value>
   </data>
   <data name="AddConfig.Label" xml:space="preserve">
-    <value>Add</value>
+    <value>追加</value>
   </data>
   <data name="AddConfigDialogTitle.Text" xml:space="preserve">
-    <value>Add configuration</value>
+    <value>設定を追加</value>
   </data>
   <data name="AppearanceSetting.Text" xml:space="preserve">
-    <value>Appearance</value>
+    <value>外観</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
-    <value>Remote Toolbox</value>
+    <value>リモートツールボックス</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>キャンセル</value>
   </data>
   <data name="Change" xml:space="preserve">
-    <value>Update</value>
+    <value>更新</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>確認</value>
   </data>
   <data name="DatabaseSetting.Text" xml:space="preserve">
-    <value>Database</value>
+    <value>データベース</value>
   </data>
   <data name="SSHKeySetting.Text" xml:space="preserve">
-    <value>SSH Keys</value>
+    <value>SSH キー</value>
   </data>
   <data name="ManageSSHKeysSetting.Text" xml:space="preserve">
-    <value>Manage Built-in SSH Keys</value>
+    <value>内蔵 SSH キーの管理</value>
   </data>
   <data name="ManageSSHKeysButton.Content" xml:space="preserve">
-    <value>Manage</value>
+    <value>管理</value>
   </data>
   <data name="ManageSSHKeysDialogTitle.Text" xml:space="preserve">
-    <value>SSH Key Management</value>
+    <value>SSH キー管理</value>
   </data>
   <data name="EmptySSHKeyTips.Text" xml:space="preserve">
-    <value>No SSH keys imported yet.</value>
+    <value>SSH キーがまだインポートされていません。</value>
   </data>
   <data name="DialogConfigNameTextBox.Header" xml:space="preserve">
-    <value>Name</value>
+    <value>名前</value>
   </data>
   <data name="DialogConfigNameTextBox.PlaceholderText" xml:space="preserve">
-    <value>Display name</value>
+    <value>表示名</value>
   </data>
   <data name="DialogGeneral.Text" xml:space="preserve">
-    <value>General</value>
+    <value>一般</value>
   </data>
   <data name="DialogIpAddressTextBox.Header" xml:space="preserve">
-    <value>Host</value>
+    <value>ホスト</value>
   </data>
   <data name="DialogIpAddressTextBox.PlaceholderText" xml:space="preserve">
-    <value>Domain or IP</value>
+    <value>ドメインまたは IP</value>
   </data>
   <data name="DialogRDPHeader.Text" xml:space="preserve">
-    <value>RDP Configuration</value>
+    <value>RDP 設定</value>
   </data>
   <data name="DialogSSHCommandTextBox.Header" xml:space="preserve">
-    <value>SSH Command</value>
+    <value>SSH コマンド</value>
   </data>
   <data name="DialogSSHPortTextBox.Header" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH ポート</value>
   </data>
   <data name="DialogSSHShutdownHeader.Text" xml:space="preserve">
-    <value>SSH Shutdown</value>
+    <value>SSH シャットダウン</value>
   </data>
   <data name="DialogSSHUserTextBox.Header" xml:space="preserve">
-    <value>SSH User</value>
+    <value>SSH ユーザー</value>
   </data>
   <data name="DialogUsingSSHKeyTextBox.Text" xml:space="preserve">
-    <value>Key Auth</value>
+    <value>キー認証</value>
   </data>
   <data name="DialogWoLHeader.Text" xml:space="preserve">
-    <value>WoL Configuration</value>
+    <value>WoL 設定</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Export</value>
+    <value>エクスポート</value>
   </data>
   <data name="FeedbackBugs.Content" xml:space="preserve">
-    <value>Report Issue</value>
+    <value>問題を報告</value>
   </data>
   <data name="MoveForward" xml:space="preserve">
-    <value>Move Forward</value>
+    <value>上に移動</value>
   </data>
   <data name="HideConfig.Label" xml:space="preserve">
-    <value>Show/Hide</value>
+    <value>表示/非表示</value>
   </data>
   <data name="ImportConfig.Content" xml:space="preserve">
-    <value>Import</value>
+    <value>インポート</value>
   </data>
   <data name="ImportConfig.Label" xml:space="preserve">
-    <value>Import</value>
+    <value>インポート</value>
   </data>
   <data name="IndependentAddressCheckBox.Content" xml:space="preserve">
-    <value>Independent WoL Address</value>
+    <value>独立した WoL アドレス</value>
   </data>
   <data name="IndependentAddressCheckBoxTips.Text" xml:space="preserve">
-    <value>You can fill in the broadcast address as the independent WoL address.</value>
+    <value>独立した WoL アドレスにはブロードキャストアドレスを設定できます。</value>
   </data>
   <data name="IndependentAddressTextBox.Header" xml:space="preserve">
-    <value>WoL Address</value>
+    <value>WoL アドレス</value>
   </data>
   <data name="IPAddress.Text" xml:space="preserve">
-    <value>IP Address</value>
+    <value>IP アドレス</value>
   </data>
   <data name="LanguageSetting.Text" xml:space="preserve">
-    <value>Language</value>
+    <value>言語</value>
   </data>
   <data name="MacAddressTextBox.Header" xml:space="preserve">
-    <value>MAC Address</value>
+    <value>MAC アドレス</value>
   </data>
   <data name="Overlay" xml:space="preserve">
-    <value>Overwrite</value>
+    <value>上書き</value>
   </data>
   <data name="PingRefHeader.Text" xml:space="preserve">
-    <value>Ping Test</value>
+    <value>Ping テスト</value>
   </data>
   <data name="PingTips.Text" xml:space="preserve">
-    <value>Note: The Magic Packet for Wake-on-LAN is sent via UDP. TCP connectivity does not imply UDP reachability.</value>
+    <value>注意：Wake-on-LAN のマジックパケットは UDP で送信されます。TCP 接続が可能でも UDP の到達性は保証されません。</value>
   </data>
   <data name="PRIVACYLink.Content" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>プライバシーポリシー</value>
   </data>
   <data name="RDPIPPortTextBox.Header" xml:space="preserve">
-    <value>RDP Port</value>
+    <value>RDP ポート</value>
   </data>
   <data name="RDPPort.Text" xml:space="preserve">
-    <value>RDP Port</value>
+    <value>RDP ポート</value>
   </data>
   <data name="ResetDatabase.Content" xml:space="preserve">
-    <value>Reset Database</value>
+    <value>データベースをリセット</value>
   </data>
   <data name="ResetDatabaseSetting.Text" xml:space="preserve">
-    <value>Reset Database</value>
+    <value>データベースをリセット</value>
   </data>
   <data name="ResetDatabaseTips.Subtitle" xml:space="preserve">
-    <value>This will permanently delete all your configuration data and cannot be undone!</value>
+    <value>すべての設定データが完全に削除され、復元できなくなります！</value>
   </data>
   <data name="ResetDatabaseTips.Title" xml:space="preserve">
-    <value>Reset Database?</value>
+    <value>データベースをリセットしますか？</value>
   </data>
   <data name="RunSSHScript" xml:space="preserve">
-    <value>Run SSH Script</value>
+    <value>SSH スクリプトを実行</value>
   </data>
   <data name="SelectSSHKeyPath.Content" xml:space="preserve">
-    <value>Browse…</value>
+    <value>参照…</value>
   </data>
   <data name="ImportSSHKeyButton.Content" xml:space="preserve">
-    <value>Import Key</value>
+    <value>キーをインポート</value>
   </data>
   <data name="PasteSSHKeyButton.Content" xml:space="preserve">
-    <value>Paste Key</value>
+    <value>キーを貼り付け</value>
   </data>
   <data name="PasteSSHKeyConfirmButton.Content" xml:space="preserve">
-    <value>Confirm</value>
+    <value>確認</value>
   </data>
   <data name="DeleteSSHKeyButton.Content" xml:space="preserve">
-    <value>Delete Key</value>
+    <value>キーを削除</value>
   </data>
   <data name="SettingsHeader.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>設定</value>
   </data>
   <data name="SponsorMe.Text" xml:space="preserve">
-    <value>Sponsor Me:</value>
+    <value>スポンサーになる：</value>
   </data>
   <data name="SSHCommandTextBox.Header" xml:space="preserve">
-    <value>SSH Shutdown Command</value>
+    <value>SSH シャットダウンコマンド</value>
   </data>
   <data name="SSHHeader" xml:space="preserve">
-    <value>SSH Shortcuts</value>
+    <value>SSH ショートカット</value>
   </data>
   <data name="SSHKeyPathTextBox.Header" xml:space="preserve">
-    <value>SSH Key Path</value>
+    <value>SSH キーパス</value>
   </data>
   <data name="SSHKeyComboBox.Header" xml:space="preserve">
-    <value>SSH Key</value>
+    <value>SSH キー</value>
   </data>
   <data name="PasteSSHKeyDialogTitle.Text" xml:space="preserve">
-    <value>Paste SSH Private Key</value>
+    <value>SSH 秘密鍵を貼り付け</value>
   </data>
   <data name="SSHKeyNameTextBox.Header" xml:space="preserve">
-    <value>Key Name</value>
+    <value>キー名</value>
   </data>
   <data name="SSHKeyNameTextBox.PlaceholderText" xml:space="preserve">
-    <value>Leave blank to use the key comment</value>
+    <value>空白の場合はキーコメントを使用</value>
   </data>
   <data name="SSHPrivateKeyTextBox.Header" xml:space="preserve">
-    <value>Private Key</value>
+    <value>秘密鍵</value>
   </data>
   <data name="SSHPrivateKeyTextBox.PlaceholderText" xml:space="preserve">
     <value>-----BEGIN OPENSSH PRIVATE KEY-----</value>
   </data>
   <data name="PasteSSHKeyError" xml:space="preserve">
-    <value>Could not parse SSH private key: {0}</value>
+    <value>SSH 秘密鍵を解析できませんでした：{0}</value>
   </data>
   <data name="SSHKeyTips1.Text" xml:space="preserve">
-    <value>Private keys are imported into the app's built-in key store, so SSH no longer depends on the original file path.</value>
+    <value>秘密鍵はアプリ内蔵のキーストアにインポートされるため、SSH は元のファイルパスに依存しなくなります。</value>
   </data>
   <data name="SSHKeyTips2.Text" xml:space="preserve">
-    <value>Key content is encrypted using the current Windows user's data protection scope.</value>
+    <value>キー内容は現在の Windows ユーザーのデータ保護スコープで暗号化されます。</value>
   </data>
   <data name="SSHPasswordBox.Header" xml:space="preserve">
-    <value>SSH Password</value>
+    <value>SSH パスワード</value>
   </data>
   <data name="SSHPasswordTips1.Text" xml:space="preserve">
-    <value>SSH password will be requested before sending. The application does not store your password in any form.</value>
+    <value>送信前に SSH パスワードを要求します。アプリケーションはパスワードを一切記録しません。</value>
   </data>
   <data name="SSHPasswordTips2.Text" xml:space="preserve">
-    <value>Note: SSH password login is not a secure option. We recommend using key-based authentication instead.</value>
+    <value>注意：SSH パスワードログインは安全ではありません。キー認証の使用をお勧めします。</value>
   </data>
   <data name="SSHPort.Text" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH ポート</value>
   </data>
   <data name="SSHPortTextBox.Header" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH ポート</value>
   </data>
   <data name="SSHResponse.Title" xml:space="preserve">
-    <value>SSH Results:</value>
+    <value>SSH 結果：</value>
   </data>
   <data name="SSHShortcutTips.Text" xml:space="preserve">
-    <value>Double-click to execute, right-click for context menu</value>
+    <value>ダブルクリックで実行、右クリックでメニューを表示</value>
   </data>
   <data name="SSHShutdownCMD.Text" xml:space="preserve">
-    <value>SSH Shutdown Command</value>
+    <value>SSH シャットダウンコマンド</value>
   </data>
   <data name="SSHShutdownPort.Text" xml:space="preserve">
-    <value>SSH Port</value>
+    <value>SSH ポート</value>
   </data>
   <data name="SSHUserTextBox.Header" xml:space="preserve">
-    <value>SSH User</value>
+    <value>SSH ユーザー</value>
   </data>
   <data name="TCPingRDPHeader.Text" xml:space="preserve">
-    <value>TCPing RDP Port</value>
+    <value>TCPing RDP ポート</value>
   </data>
   <data name="TCPingSSHHeader.Text" xml:space="preserve">
-    <value>TCPing SSH Port</value>
+    <value>TCPing SSH ポート</value>
   </data>
   <data name="TCPingWoLHeader.Text" xml:space="preserve">
-    <value>TCPing WoL Port</value>
+    <value>TCPing WoL ポート</value>
   </data>
   <data name="ThemeSetting.Text" xml:space="preserve">
-    <value>App Theme</value>
+    <value>テーマ</value>
   </data>
   <data name="WoLAddress.Text" xml:space="preserve">
-    <value>WoL Address</value>
+    <value>WoL アドレス</value>
   </data>
   <data name="WoLHeader" xml:space="preserve">
-    <value>Remote Tools</value>
+    <value>リモートツール</value>
   </data>
   <data name="WoLPort.Text" xml:space="preserve">
-    <value>WoL Port</value>
+    <value>WoL ポート</value>
   </data>
   <data name="WoLPortTextBox.Header" xml:space="preserve">
-    <value>WoL Port</value>
+    <value>WoL ポート</value>
   </data>
   <data name="WoLTips1.Text" xml:space="preserve">
-    <value>Double-click to wake, right-click for context menu</value>
+    <value>ダブルクリックで起動、右クリックでメニューを表示</value>
   </data>
   <data name="WoLTips2.Text" xml:space="preserve">
-    <value>Selected configuration details</value>
+    <value>選択した設定の詳細</value>
   </data>
   <data name="MoveBackward" xml:space="preserve">
-    <value>Move Backward</value>
+    <value>下に移動</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>編集</value>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>複製</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>削除</value>
   </data>
   <data name="MagicPacketSentSuccessfully" xml:space="preserve">
-    <value>Magic Packet Sent Successfully!</value>
+    <value>マジックパケット送信成功！</value>
   </data>
   <data name="MagicPacketSendingFailed" xml:space="preserve">
-    <value>Magic Packet Sending Failed!</value>
+    <value>マジックパケット送信失敗！</value>
   </data>
   <data name="MagicPacketSentSuccessfullySubtitle" xml:space="preserve">
-    <value>The Magic Packet has been sent successfully over UDP.</value>
+    <value>マジックパケットが UDP で正常に送信されました。</value>
   </data>
   <data name="MagicPacketSendingFailedSubtitle" xml:space="preserve">
-    <value>Please check your configuration.</value>
+    <value>設定内容をご確認ください。</value>
   </data>
   <data name="WoL" xml:space="preserve">
     <value>Wake on LAN</value>
   </data>
   <data name="RDP" xml:space="preserve">
-    <value>Remote Desktop</value>
+    <value>リモートデスクトップ</value>
   </data>
   <data name="SSHShutdown" xml:space="preserve">
-    <value>SSH Shutdown</value>
+    <value>SSH シャットダウン</value>
   </data>
 </root>

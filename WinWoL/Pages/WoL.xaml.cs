@@ -214,7 +214,7 @@ namespace WinWoL.Pages
         {
             string sshPasswd = null;
             // 使用密码登录
-            if (wolModel.SSHKeyIsOpen == "False")
+            if (wolModel.SSHKeyIsOpen != "True")
             {
                 SSHPasswdModel sshPasswdModel = new SSHPasswdModel();
                 // 创建一个新的dialog对象
@@ -249,7 +249,7 @@ namespace WinWoL.Pages
             // 在子线程中执行任务
             Thread subThread = new Thread(new ThreadStart(() =>
             {
-                string res = GeneralMethod.SendSSHCommand(wolModel.SSHCommand, wolModel.IPAddress, wolModel.SSHPort, wolModel.SSHUser, sshPasswd, wolModel.SSHKeyPath, wolModel.SSHKeyIsOpen);
+                string res = GeneralMethod.SendSSHCommand(wolModel.SSHCommand, wolModel.IPAddress, wolModel.SSHPort, wolModel.SSHUser, sshPasswd, wolModel.SSHKeyId, wolModel.SSHKeyIsOpen);
                 _dispatcherQueue.TryEnqueue(() =>
                 {
                     SSHResponse.Subtitle = res;

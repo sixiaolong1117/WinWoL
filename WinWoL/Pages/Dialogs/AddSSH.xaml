@@ -125,24 +125,68 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
+                    <ComboBox
+                        x:Name="SSHKeyComboBox"
+                        x:Uid="SSHKeyComboBox"
+                        Width="250"
+                        Margin="0,0,0,8"
+                        DisplayMemberPath="Name"
+                        SelectionChanged="SSHKeyComboBox_SelectionChanged" />
                     <StackPanel
                         Width="250"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Orientation="Horizontal">
-                        <TextBox
-                            x:Name="SSHKeyPathTextBox"
-                            x:Uid="SSHKeyPathTextBox"
-                            Width="186"
-                            Margin="0,0,4,0"
-                            PlaceholderText="~/.ssh/id_rsa" />
+                        Orientation="Vertical">
                         <Button
-                            x:Name="SelectSSHKeyPath"
-                            x:Uid="SelectSSHKeyPath"
-                            Width="60"
+                            x:Name="ImportSSHKeyButton"
+                            x:Uid="ImportSSHKeyButton"
+                            Width="250"
+                            Margin="0,0,0,8"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
-                            Click="SelectSSHKeyPath_Click" />
+                            Click="ImportSSHKey_Click" />
+                        <Button
+                            x:Name="PasteSSHKeyButton"
+                            x:Uid="PasteSSHKeyButton"
+                            Width="250"
+                            Margin="0,0,0,8"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                            <Button.Flyout>
+                                <Flyout x:Name="PasteSSHKeyFlyout">
+                                    <StackPanel Width="320">
+                                        <TextBox
+                                            x:Name="SSHKeyNameTextBox"
+                                            x:Uid="SSHKeyNameTextBox"
+                                            Margin="0,0,0,8" />
+                                        <TextBox
+                                            x:Name="SSHPrivateKeyTextBox"
+                                            x:Uid="SSHPrivateKeyTextBox"
+                                            Height="220"
+                                            AcceptsReturn="True"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            x:Name="PasteSSHKeyError"
+                                            Margin="0,8,0,0"
+                                            Foreground="IndianRed"
+                                            TextWrapping="Wrap"
+                                            Visibility="Collapsed" />
+                                        <Button
+                                            x:Uid="PasteSSHKeyConfirmButton"
+                                            Margin="0,8,0,0"
+                                            HorizontalAlignment="Right"
+                                            Click="ConfirmPasteSSHKey_Click" />
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <Button
+                            x:Name="DeleteSSHKeyButton"
+                            x:Uid="DeleteSSHKeyButton"
+                            Width="250"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Click="DeleteSSHKey_Click" />
                     </StackPanel>
                     <TextBlock
                         x:Uid="SSHKeyTips1"

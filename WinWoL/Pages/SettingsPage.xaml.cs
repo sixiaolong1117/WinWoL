@@ -6,6 +6,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.Globalization;
 using Windows.Storage;
 using WinWoL.Datas;
+using WinWoL.Pages.Dialogs;
 
 namespace WinWoL.Pages
 {
@@ -35,7 +36,9 @@ namespace WinWoL.Pages
         public List<string> language { get; } = new List<string>()
         {
             "简体中文",
-            "English"
+            "English",
+            "日本語",
+            "한국어"
         };
         private void LoadString()
         {
@@ -64,6 +67,16 @@ namespace WinWoL.Pages
             else if (localSettings.Values["languageChange"] as string == "en-US")
             {
                 languageChange.SelectedItem = language[1];
+                return true;
+            }
+            else if (localSettings.Values["languageChange"] as string == "ja-JP")
+            {
+                languageChange.SelectedItem = language[2];
+                return true;
+            }
+            else if (localSettings.Values["languageChange"] as string == "ko-KR")
+            {
+                languageChange.SelectedItem = language[3];
                 return true;
             }
             else
@@ -172,6 +185,32 @@ namespace WinWoL.Pages
                         localSettings.Values["languageChange"] = "en-US";
                     }
                     break;
+                case "日本語":
+                    if (localSettings.Values["languageChange"] as string != "ja-JP")
+                    {
+                        localSettings.Values["languageChange"] = "ja-JP";
+                        ApplicationLanguages.PrimaryLanguageOverride = localSettings.Values["languageChange"] as string;
+                        Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", localSettings.Values["languageChange"] as string);
+                        Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
+                    }
+                    else
+                    {
+                        localSettings.Values["languageChange"] = "ja-JP";
+                    }
+                    break;
+                case "한국어":
+                    if (localSettings.Values["languageChange"] as string != "ko-KR")
+                    {
+                        localSettings.Values["languageChange"] = "ko-KR";
+                        ApplicationLanguages.PrimaryLanguageOverride = localSettings.Values["languageChange"] as string;
+                        Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", localSettings.Values["languageChange"] as string);
+                        Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
+                    }
+                    else
+                    {
+                        localSettings.Values["languageChange"] = "ko-KR";
+                    }
+                    break;
                 default:
                     throw new Exception($"Invalid argument: {languageChange}");
             }
@@ -180,6 +219,16 @@ namespace WinWoL.Pages
         {
             ResetDatabaseTips.IsOpen = true;
         }
+
+        private async void ManageSSHKeysButton_Click(object sender, RoutedEventArgs e)
+        {
+            ManageSSHKeys dialog = new ManageSSHKeys();
+            dialog.XamlRoot = this.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = resourceLoader.GetString("Cancel");
+            await dialog.ShowAsync();
+        }
+
         private void ResetDatabaseTips_ActionButtonClick(TeachingTip sender, object args)
         {
             // 实例化SQLiteHelper

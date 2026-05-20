@@ -50,6 +50,7 @@
 		<None Remove="Pages\Dialogs\AddSSH.xaml" />
 		<None Remove="Pages\Dialogs\AddWoL.xaml" />
 		<None Remove="Pages\Dialogs\EnterSSHPasswd.xaml" />
+		<None Remove="Pages\Dialogs\ManageSSHKeys.xaml" />
 		<None Remove="Pages\Dialogs\PingTools.xaml" />
 		<None Remove="Pages\SSHShortcut.xaml" />
 		<None Remove="Pages\WoL.xaml" />
@@ -95,6 +96,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Page Update="Pages\Dialogs\EnterSSHPasswd.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
+	<ItemGroup>
+		<Page Update="Pages\Dialogs\ManageSSHKeys.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</Page>
 	</ItemGroup>
