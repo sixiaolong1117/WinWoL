@@ -77,6 +77,9 @@ namespace WinWoL.Pages
             // 默认按钮为PrimaryButton
             dialog.DefaultButton = ContentDialogButton.Primary;
 
+            // 订阅 DataSaved 事件，处理从管理密钥页面返回后保存数据的情况
+            dialog.DataSaved += (s, args) => LoadData();
+
             // 显示Dialog并等待其关闭
             ContentDialogResult result = await dialog.ShowAsync();
 
@@ -181,6 +184,9 @@ namespace WinWoL.Pages
             dialog.CloseButtonText = resourceLoader.GetString("Cancel");
             // 默认按钮为PrimaryButton
             dialog.DefaultButton = ContentDialogButton.Primary;
+
+            // 订阅 DataSaved 事件，处理从管理密钥页面返回后保存数据的情况
+            dialog.DataSaved += (s, args) => LoadData();
 
             // 显示Dialog并等待其关闭
             ContentDialogResult result = await dialog.ShowAsync();

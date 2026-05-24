@@ -32,7 +32,7 @@ namespace WinWoL.Methods
             }
         }
 
-        // SSH初始化
+        // SSH初始化（仅使用数据库中的SSHKeyId，不再回退到旧版文件路径）
         private static SshClient InitializeSshClient(string sshHost, int sshPort, string sshUser, string sshPasswd, string sshKeyId, bool usePrivateKey)
         {
             if (usePrivateKey)
@@ -47,22 +47,31 @@ namespace WinWoL.Methods
             }
         }
 
+        /// <summary>
+        /// 根据SSHKeyId从数据库加载私钥
+        /// </summary>
         private static PrivateKeyFile LoadPrivateKeyFile(string sshKeyId)
         {
-            if (!int.TryParse(sshKeyId, out int keyId))
+            if (string.IsNullOrWhiteSpace(sshKeyId))
             {
-                throw new InvalidOperationException("未选择可用的 SSH 密钥。");
+                throw new InvalidOperationException("未配置 SSH 密钥。");
             }
 
-            SQLiteHelper dbHelper = new SQLiteHelper();
-            SSHKeyModel sshKey = dbHelper.GetSSHKeyById(keyId);
-            if (sshKey == null || string.IsNullOrWhiteSpace(sshKey.PrivateKey))
+            // SSHKeyId 为纯数字，从数据库加载
+            if (int.TryParse(sshKeyId, out int keyId))
             {
-                throw new InvalidOperationException("未找到可用的 SSH 密钥。");
+                SQLiteHelper dbHelper = new SQLiteHelper();
+                SSHKeyModel sshKey = dbHelper.GetSSHKeyById(keyId);
+                if (sshKey == null || string.IsNullOrWhiteSpace(sshKey.PrivateKey))
+                {
+                    throw new InvalidOperationException("未找到可用的 SSH 密钥。");
+                }
+
+                MemoryStream privateKeyStream = new MemoryStream(Encoding.UTF8.GetBytes(sshKey.PrivateKey));
+                return new PrivateKeyFile(privateKeyStream);
             }
 
-            MemoryStream privateKeyStream = new MemoryStream(Encoding.UTF8.GetBytes(sshKey.PrivateKey));
-            return new PrivateKeyFile(privateKeyStream);
+            throw new InvalidOperationException("无法识别的 SSH 密钥格式，请在编辑中重新选择密钥。");
         }
 
         // SSH返回

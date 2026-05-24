@@ -16,6 +16,11 @@ namespace WinWoL.Pages.Dialogs
         private readonly ResourceLoader resourceLoader = new ResourceLoader();
         private List<SSHKeyModel> sshKeys = new List<SSHKeyModel>();
 
+        /// <summary>
+        /// 当数据通过管理密钥后保存时触发，用于通知父页面刷新列表
+        /// </summary>
+        public event EventHandler DataSaved;
+
         public AddWoL(WoLModel wolModel)
         {
             this.InitializeComponent();
@@ -280,46 +285,8 @@ namespace WinWoL.Pages.Dialogs
         {
             refresh();
         }
-        private async void ImportSSHKey_Click(object sender, RoutedEventArgs e)
-        {
-            int? sshKeyId = await SSHKeyMethod.ImportKey();
-            if (sshKeyId != null)
-            {
-                LoadSSHKeys(sshKeyId.Value.ToString());
-            }
-        }
-
-        private void ConfirmPasteSSHKey_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                int sshKeyId = SSHKeyMethod.SavePrivateKey(SSHKeyNameTextBox.Text, SSHPrivateKeyTextBox.Text);
-                SSHKeyNameTextBox.Text = "";
-                SSHPrivateKeyTextBox.Text = "";
-                PasteSSHKeyError.Visibility = Visibility.Collapsed;
-                PasteSSHKeyFlyout.Hide();
-                LoadSSHKeys(sshKeyId.ToString());
-            }
-            catch (Exception ex)
-            {
-                PasteSSHKeyError.Text = string.Format(resourceLoader.GetString("PasteSSHKeyError"), ex.Message);
-                PasteSSHKeyError.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void DeleteSSHKey_Click(object sender, RoutedEventArgs e)
-        {
-            if (SSHKeyComboBox.SelectedItem is SSHKeyModel selectedKey)
-            {
-                SQLiteHelper dbHelper = new SQLiteHelper();
-                dbHelper.DeleteSSHKey(selectedKey.Id);
-                LoadSSHKeys("");
-            }
-        }
-
         private void SSHKeyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DeleteSSHKeyButton.IsEnabled = SSHKeyComboBox.SelectedItem != null;
         }
 
         private void LoadSSHKeys(string selectedSSHKeyId)
@@ -337,8 +304,6 @@ namespace WinWoL.Pages.Dialogs
                     break;
                 }
             }
-
-            DeleteSSHKeyButton.IsEnabled = SSHKeyComboBox.SelectedItem != null;
         }
 
         private string GetSelectedSSHKeyId()
@@ -350,14 +315,69 @@ namespace WinWoL.Pages.Dialogs
             return "";
         }
 
+        private async void ManageSSHKeysNav_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFormStateToModel();
+            this.Hide();
+
+            ManageSSHKeys dialog = new ManageSSHKeys();
+            dialog.XamlRoot = this.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = resourceLoader.GetString("Cancel");
+            await dialog.ShowAsync();
+
+            LoadSSHKeys(GetConfiguredSSHKeyId(WoLData));
+
+            // 重新显示对话框并获取用户操作结果
+            ContentDialogResult result = await this.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                // 此时 MyDialog_PrimaryButtonClick 已自动执行，WoLData 已更新
+                SQLiteHelper dbHelper = new SQLiteHelper();
+                if (WoLData.Id == 0)
+                {
+                    dbHelper.InsertData(WoLData);
+                }
+                else
+                {
+                    dbHelper.UpdateData(WoLData);
+                }
+                DataSaved?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private void SaveFormStateToModel()
+        {
+            WoLData.Name = string.IsNullOrEmpty(ConfigNameTextBox.Text) ? "<未命名配置>" : ConfigNameTextBox.Text;
+            WoLData.IPAddress = IpAddressTextBox.Text;
+            WoLData.BroadcastIsOpen = IndependentAddressCheckBox.IsChecked == true ? "True" : "False";
+            WoLData.WoLIsOpen = WoLIsOpenToggleSwitch.IsOn ? "True" : "False";
+            WoLData.MacAddress = MacAddressTextBox.Text;
+            WoLData.WoLPort = WoLPortTextBox.Text;
+            WoLData.RDPIsOpen = RDPIsOpenToggleSwitch.IsOn ? "True" : "False";
+            WoLData.RDPPort = RDPIPPortTextBox.Text;
+            WoLData.SSHIsOpen = SSHShutdownIsOpenToggleSwitch.IsOn ? "True" : "False";
+            WoLData.SSHCommand = SSHCommandTextBox.Text;
+            WoLData.SSHPort = SSHPortTextBox.Text;
+            WoLData.SSHUser = SSHUserTextBox.Text;
+            WoLData.SSHKeyId = GetSelectedSSHKeyId();
+            WoLData.SSHKeyPath = "";
+            WoLData.SSHKeyIsOpen = PrivateKeyIsOpenToggleSwitch.IsOn ? "True" : "False";
+
+            if (IndependentAddressCheckBox.IsChecked == true)
+            {
+                WoLData.WoLAddress = IndependentAddressTextBox.Text;
+            }
+            else
+            {
+                WoLData.WoLAddress = IpAddressTextBox.Text;
+            }
+        }
+
         private string GetConfiguredSSHKeyId(WoLModel wolModel)
         {
-            if (!string.IsNullOrEmpty(wolModel.SSHKeyId))
-            {
-                return wolModel.SSHKeyId;
-            }
-
-            return int.TryParse(wolModel.SSHKeyPath, out _) ? wolModel.SSHKeyPath : "";
+            // 仅使用数据库中的SSHKeyId（不再回退到旧版文件路径）
+            return !string.IsNullOrEmpty(wolModel.SSHKeyId) ? wolModel.SSHKeyId : "";
         }
     }
 }

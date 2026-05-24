@@ -106,6 +106,9 @@
   <data name="AppearanceSetting.Text" xml:space="preserve">
     <value>모양</value>
   </data>
+  <data name="LogSetting.Text" xml:space="preserve">
+    <value>로그</value>
+  </data>
   <data name="AppTitle" xml:space="preserve">
     <value>원격 도구함</value>
   </data>
@@ -117,6 +120,12 @@
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>확인</value>
+  </data>
+  <data name="DeleteSSHKeyConfirmPrimaryButton.Content" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="DeleteSSHKeyConfirmCancelButton.Content" xml:space="preserve">
+    <value>취소</value>
   </data>
   <data name="DatabaseSetting.Text" xml:space="preserve">
     <value>데이터베이스</value>
@@ -256,6 +265,9 @@
   <data name="DeleteSSHKeyButton.Content" xml:space="preserve">
     <value>키 삭제</value>
   </data>
+  <data name="ManageSSHKeysNavButton.Content" xml:space="preserve">
+    <value>키 관리</value>
+  </data>
   <data name="SettingsHeader.Text" xml:space="preserve">
     <value>설정</value>
   </data>
@@ -297,6 +309,27 @@
   </data>
   <data name="SSHKeyTips2.Text" xml:space="preserve">
     <value>키 내용은 현재 Windows 사용자의 데이터 보호 범위로 암호화됩니다.</value>
+  </data>
+  <data name="WindowsHelloSetting.Text" xml:space="preserve">
+    <value>Windows Hello 보호</value>
+  </data>
+  <data name="WindowsHelloSettingSubtitle.Text" xml:space="preserve">
+    <value>활성화하면 SSH 키 관리 시 Windows Hello 인증이 필요합니다</value>
+  </data>
+  <data name="WindowsHelloEnableMessage.Text" xml:space="preserve">
+    <value>Windows Hello 보호를 활성화하려면 본인 확인을 해주세요</value>
+  </data>
+  <data name="WindowsHelloDisableMessage.Text" xml:space="preserve">
+    <value>Windows Hello 보호를 비활성화하려면 본인 확인을 해주세요</value>
+  </data>
+  <data name="WindowsHelloNotAvailable.Text" xml:space="preserve">
+    <value>이 장치에서 Windows Hello를 사용할 수 없습니다</value>
+  </data>
+  <data name="WindowsHelloVerifyMessage.Text" xml:space="preserve">
+    <value>계속하려면 본인 확인을 해주세요</value>
+  </data>
+  <data name="DeleteSSHKeyConfirm.Text" xml:space="preserve">
+    <value>이 SSH 키를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.</value>
   </data>
   <data name="SSHPasswordBox.Header" xml:space="preserve">
     <value>SSH 비밀번호</value>

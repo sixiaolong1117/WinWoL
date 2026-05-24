@@ -6,6 +6,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.Globalization;
 using Windows.Storage;
 using WinWoL.Datas;
+using WinWoL.Methods;
 using WinWoL.Pages.Dialogs;
 
 namespace WinWoL.Pages
@@ -24,6 +25,7 @@ namespace WinWoL.Pages
             LoadString();
             materialStatusSet();
             languageStatusSet();
+            WindowsHelloStatusSet();
         }
         // 材料ComboBox列表List
         public List<string> material { get; } = new List<string>()
@@ -218,6 +220,44 @@ namespace WinWoL.Pages
         private void ResetDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
             ResetDatabaseTips.IsOpen = true;
+        }
+
+        private async void WindowsHelloStatusSet()
+        {
+            bool isAvailable = await WindowsHelloHelper.IsAvailableAsync();
+            if (!isAvailable)
+            {
+                WindowsHelloToggle.IsEnabled = false;
+                WindowsHelloStatusText.Text = resourceLoader.GetString("WindowsHelloNotAvailable");
+                return;
+            }
+
+            WindowsHelloToggle.IsOn = WindowsHelloHelper.IsEnabled;
+        }
+
+        private async void WindowsHelloToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (WindowsHelloToggle.IsOn == WindowsHelloHelper.IsEnabled)
+            {
+                return;
+            }
+
+            if (WindowsHelloToggle.IsOn)
+            {
+                bool result = await WindowsHelloHelper.EnableAsync(resourceLoader.GetString("WindowsHelloEnableMessage"));
+                if (!result)
+                {
+                    WindowsHelloToggle.IsOn = false;
+                }
+            }
+            else
+            {
+                bool result = await WindowsHelloHelper.DisableAsync(resourceLoader.GetString("WindowsHelloDisableMessage"));
+                if (!result)
+                {
+                    WindowsHelloToggle.IsOn = true;
+                }
+            }
         }
 
         private async void ManageSSHKeysButton_Click(object sender, RoutedEventArgs e)

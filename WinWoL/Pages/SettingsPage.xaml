@@ -8,211 +8,282 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock
-            x:Name="SettingsHeader"
-            x:Uid="SettingsHeader"
-            Grid.Row="0"
-            Grid.Column="0"
-            Margin="0,24,0,8"
-            HorizontalAlignment="Center"
-            FontSize="24" />
+            <!-- 设置标题 -->
+            <TextBlock
+                x:Name="SettingsHeader"
+                x:Uid="SettingsHeader"
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,24,0,8"
+                HorizontalAlignment="Center"
+                FontSize="24"/>
 
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                x:Name="AppearanceSetting"
-                x:Uid="AppearanceSetting"
-                Grid.Row="0"
-                Margin="24,18,0,8" />
-            <Grid
-                Grid.Row="1"
-                Margin="24,0,24,0"
-                Padding="28,16,28,16"
-                Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
-                BorderThickness="0"
-                CornerRadius="4,4,0,0">
+            <!-- 外观 -->
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" MinWidth="60" />
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <FontIcon
-                    Grid.Column="0"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
-                    Glyph="&#xE790;" />
                 <TextBlock
-                    x:Name="ThemeSetting"
-                    x:Uid="ThemeSetting"
-                    Grid.Column="1"
-                    Margin="16,0,0,0"
-                    VerticalAlignment="Center" />
-                <ComboBox
-                    x:Name="backgroundMaterial"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    ItemsSource="{x:Bind material}"
-                    SelectionChanged="backgroundMaterial_SelectionChanged" />
+                    x:Name="AppearanceSetting"
+                    x:Uid="AppearanceSetting"
+                    Grid.Row="0"
+                    Margin="24,18,0,8"/>
+                <Grid
+                    Grid.Row="1"
+                    Margin="24,0,24,0"
+                    Padding="28,16,28,16"
+                    Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
+                    BorderThickness="0"
+                    CornerRadius="4,4,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"
+                                          MinWidth="60"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontFamily="Segoe Fluent Icons"
+                        Glyph="&#xE790;"/>
+                    <TextBlock
+                        x:Name="ThemeSetting"
+                        x:Uid="ThemeSetting"
+                        Grid.Column="1"
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"/>
+                    <ComboBox
+                        x:Name="backgroundMaterial"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        ItemsSource="{x:Bind material}"
+                        SelectionChanged="backgroundMaterial_SelectionChanged"/>
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    Margin="24,1,24,0"
+                    Padding="28,16,28,16"
+                    Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
+                    BorderThickness="0"
+                    CornerRadius="0,0,4,4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"
+                                          MinWidth="60"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontFamily="Segoe Fluent Icons"
+                        Glyph="&#xF2B7;"/>
+                    <TextBlock
+                        x:Name="LanguageSetting"
+                        x:Uid="LanguageSetting"
+                        Grid.Column="1"
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"/>
+                    <ComboBox
+                        x:Name="languageChange"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        ItemsSource="{x:Bind language}"
+                        SelectionChanged="languageChange_SelectionChanged"/>
+                </Grid>
             </Grid>
-            <Grid
-                Grid.Row="2"
-                Margin="24,1,24,0"
-                Padding="28,16,28,16"
-                Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
-                BorderThickness="0"
-                CornerRadius="0,0,4,4">
+
+            <!-- SSH 密钥 -->
+            <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" MinWidth="60" />
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <FontIcon
-                    Grid.Column="0"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
-                    Glyph="&#xF2B7;" />
                 <TextBlock
-                    x:Name="LanguageSetting"
-                    x:Uid="LanguageSetting"
-                    Grid.Column="1"
-                    Margin="16,0,0,0"
-                    VerticalAlignment="Center" />
-                <ComboBox
-                    x:Name="languageChange"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    ItemsSource="{x:Bind language}"
-                    SelectionChanged="languageChange_SelectionChanged" />
+                    x:Uid="SSHKeySetting"
+                    Grid.Row="0"
+                    Margin="24,18,0,8"/>
+                <Grid
+                    Grid.Row="1"
+                    Margin="24,0,24,0"
+                    Padding="28,16,28,16"
+                    Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
+                    BorderThickness="0"
+                    CornerRadius="4,4,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"
+                                          MinWidth="60"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontFamily="Segoe Fluent Icons"
+                        Glyph="&#xE72E;"/>
+                    <TextBlock
+                        x:Uid="ManageSSHKeysSetting"
+                        Grid.Column="1"
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"/>
+                    <Button
+                        x:Uid="ManageSSHKeysButton"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Click="ManageSSHKeysButton_Click"/>
+                </Grid>
             </Grid>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid
+                    Grid.Row="1"
+                    Margin="24,1,24,0"
+                    Padding="28,16,28,16"
+                    Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
+                    BorderThickness="0"
+                    CornerRadius="0,0,4,4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontFamily="Segoe Fluent Icons"
+                        Glyph="&#xE72E;"/>
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            x:Uid="WindowsHelloSetting"
+                            TextWrapping="Wrap"/>
+                        <TextBlock
+                            x:Name="WindowsHelloStatusText"
+                            x:Uid="WindowsHelloSettingSubtitle"
+                            FontSize="12"
+                            Foreground="{ThemeResource SystemControlBackgroundBaseMediumBrush}"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <ToggleSwitch
+                        x:Name="WindowsHelloToggle"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="2"
+                        Margin="0,0,-113,0"
+                        VerticalAlignment="Center"
+                        OffContent=""
+                        OnContent=""
+                        Toggled="WindowsHelloToggle_Toggled"/>
+                </Grid>
+            </Grid>
+
+            <!-- 日志 -->
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Uid="LogSetting"
+                    Grid.Row="0"
+                    Margin="24,18,0,8"/>
+                <Grid
+                    Grid.Row="1"
+                    Margin="24,0,24,0"
+                    Padding="28,16,28,16"
+                    Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
+                    BorderThickness="0"
+                    CornerRadius="4,4,4,4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"
+                                          MinWidth="60"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontFamily="Segoe Fluent Icons"
+                        Glyph="&#xE783;"/>
+                    <TextBlock
+                        x:Uid="ResetDatabaseSetting"
+                        Grid.Column="1"
+                        Margin="16,0,0,0"
+                        VerticalAlignment="Center"/>
+                    <Button
+                        x:Uid="ResetDatabase"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Click="ResetDatabaseButton_Click"/>
+                </Grid>
+            </Grid>
+            <TeachingTip
+                x:Name="ResetDatabaseTips"
+                x:Uid="ResetDatabaseTips"
+                ActionButtonClick="ResetDatabaseTips_ActionButtonClick"
+                IsLightDismissEnabled="True"
+                PlacementMargin="20"
+                PreferredPlacement="Auto"/>
+
+            <!-- 底部留白，使页面可继续向下滚动 -->
+            <Grid Grid.Row="5"
+                  Height="120"/>
         </Grid>
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                x:Uid="SSHKeySetting"
-                Grid.Row="0"
-                Margin="24,18,0,8" />
-            <Grid
-                Grid.Row="1"
-                Margin="24,0,24,0"
-                Padding="28,16,28,16"
-                Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
-                BorderThickness="0"
-                CornerRadius="4,4,4,4">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" MinWidth="60" />
-                </Grid.ColumnDefinitions>
-                <FontIcon
-                    Grid.Column="0"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
-                    Glyph="&#xE72E;" />
-                <TextBlock
-                    x:Uid="ManageSSHKeysSetting"
-                    Grid.Column="1"
-                    Margin="16,0,0,0"
-                    VerticalAlignment="Center" />
-                <Button
-                    x:Uid="ManageSSHKeysButton"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Click="ManageSSHKeysButton_Click" />
-            </Grid>
-        </Grid>
-        <Grid Grid.Row="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                x:Uid="DatabaseSetting"
-                Grid.Row="0"
-                Margin="24,18,0,8" />
-            <Grid
-                Grid.Row="1"
-                Margin="24,0,24,0"
-                Padding="28,16,28,16"
-                Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
-                BorderThickness="0"
-                CornerRadius="4,4,4,4">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" MinWidth="60" />
-                </Grid.ColumnDefinitions>
-                <FontIcon
-                    Grid.Column="0"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe Fluent Icons"
-                    Glyph="&#xE783;" />
-                <TextBlock
-                    x:Uid="ResetDatabaseSetting"
-                    Grid.Column="1"
-                    Margin="16,0,0,0"
-                    VerticalAlignment="Center" />
-                <Button
-                    x:Uid="ResetDatabase"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Click="ResetDatabaseButton_Click" />
-            </Grid>
-        </Grid>
-        <TeachingTip
-            x:Name="ResetDatabaseTips"
-            x:Uid="ResetDatabaseTips"
-            ActionButtonClick="ResetDatabaseTips_ActionButtonClick"
-            IsLightDismissEnabled="True"
-            PlacementMargin="20"
-            PreferredPlacement="Auto" />
-    </Grid>
+    </ScrollViewer>
 </Page>

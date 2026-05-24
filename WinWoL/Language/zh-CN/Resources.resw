@@ -163,7 +163,10 @@
     <value>添加配置</value>
   </data>
   <data name="AppearanceSetting.Text" xml:space="preserve">
-    <value>设置</value>
+    <value>外观</value>
+  </data>
+  <data name="LogSetting.Text" xml:space="preserve">
+    <value>日志</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
     <value>远程工具箱</value>
@@ -176,6 +179,12 @@
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>确认</value>
+  </data>
+  <data name="DeleteSSHKeyConfirmPrimaryButton.Content" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeleteSSHKeyConfirmCancelButton.Content" xml:space="preserve">
+    <value>取消</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>复制</value>
@@ -342,6 +351,9 @@
   <data name="DeleteSSHKeyButton.Content" xml:space="preserve">
     <value>删除密钥</value>
   </data>
+  <data name="ManageSSHKeysNavButton.Content" xml:space="preserve">
+    <value>管理密钥</value>
+  </data>
   <data name="SettingsHeader.Text" xml:space="preserve">
     <value>设置</value>
   </data>
@@ -383,6 +395,27 @@
   </data>
   <data name="SSHKeyTips2.Text" xml:space="preserve">
     <value>密钥内容会使用当前 Windows 用户的数据保护机制加密保存。</value>
+  </data>
+  <data name="WindowsHelloSetting.Text" xml:space="preserve">
+    <value>Windows Hello 安全保护</value>
+  </data>
+  <data name="WindowsHelloSettingSubtitle.Text" xml:space="preserve">
+    <value>启用后，管理 SSH 密钥时需要 Windows Hello 验证</value>
+  </data>
+  <data name="WindowsHelloEnableMessage.Text" xml:space="preserve">
+    <value>请验证身份以启用 Windows Hello 保护</value>
+  </data>
+  <data name="WindowsHelloDisableMessage.Text" xml:space="preserve">
+    <value>请验证身份以关闭 Windows Hello 保护</value>
+  </data>
+  <data name="WindowsHelloNotAvailable.Text" xml:space="preserve">
+    <value>Windows Hello 在此设备上不可用</value>
+  </data>
+  <data name="WindowsHelloVerifyMessage.Text" xml:space="preserve">
+    <value>请验证身份以继续操作</value>
+  </data>
+  <data name="DeleteSSHKeyConfirm.Text" xml:space="preserve">
+    <value>确定要删除此 SSH 密钥吗？此操作不可撤销。</value>
   </data>
   <data name="SSHPasswordBox.Header" xml:space="preserve">
     <value>SSH 密码</value>

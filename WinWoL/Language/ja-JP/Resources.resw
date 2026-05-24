@@ -106,6 +106,9 @@
   <data name="AppearanceSetting.Text" xml:space="preserve">
     <value>外観</value>
   </data>
+  <data name="LogSetting.Text" xml:space="preserve">
+    <value>ログ</value>
+  </data>
   <data name="AppTitle" xml:space="preserve">
     <value>リモートツールボックス</value>
   </data>
@@ -117,6 +120,12 @@
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>確認</value>
+  </data>
+  <data name="DeleteSSHKeyConfirmPrimaryButton.Content" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="DeleteSSHKeyConfirmCancelButton.Content" xml:space="preserve">
+    <value>キャンセル</value>
   </data>
   <data name="DatabaseSetting.Text" xml:space="preserve">
     <value>データベース</value>
@@ -256,6 +265,9 @@
   <data name="DeleteSSHKeyButton.Content" xml:space="preserve">
     <value>キーを削除</value>
   </data>
+  <data name="ManageSSHKeysNavButton.Content" xml:space="preserve">
+    <value>キー管理</value>
+  </data>
   <data name="SettingsHeader.Text" xml:space="preserve">
     <value>設定</value>
   </data>
@@ -297,6 +309,27 @@
   </data>
   <data name="SSHKeyTips2.Text" xml:space="preserve">
     <value>キー内容は現在の Windows ユーザーのデータ保護スコープで暗号化されます。</value>
+  </data>
+  <data name="WindowsHelloSetting.Text" xml:space="preserve">
+    <value>Windows Hello 保護</value>
+  </data>
+  <data name="WindowsHelloSettingSubtitle.Text" xml:space="preserve">
+    <value>有効にすると、SSH キーの管理に Windows Hello 認証が必要になります</value>
+  </data>
+  <data name="WindowsHelloEnableMessage.Text" xml:space="preserve">
+    <value>Windows Hello 保護を有効にするために本人確認をしてください</value>
+  </data>
+  <data name="WindowsHelloDisableMessage.Text" xml:space="preserve">
+    <value>Windows Hello 保護を無効にするために本人確認をしてください</value>
+  </data>
+  <data name="WindowsHelloNotAvailable.Text" xml:space="preserve">
+    <value>このデバイスでは Windows Hello は利用できません</value>
+  </data>
+  <data name="WindowsHelloVerifyMessage.Text" xml:space="preserve">
+    <value>続行するには本人確認をしてください</value>
+  </data>
+  <data name="DeleteSSHKeyConfirm.Text" xml:space="preserve">
+    <value>この SSH キーを削除してもよろしいですか？この操作は元に戻せません。</value>
   </data>
   <data name="SSHPasswordBox.Header" xml:space="preserve">
     <value>SSH パスワード</value>

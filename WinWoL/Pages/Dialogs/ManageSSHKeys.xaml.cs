@@ -54,12 +54,27 @@ namespace WinWoL.Pages.Dialogs
 
         private void DeleteSSHKey_Click(object sender, RoutedEventArgs e)
         {
+            if (SSHKeyListView.SelectedItem != null)
+            {
+                DeleteConfirmFlyout.ShowAt(DeleteSSHKeyButton);
+            }
+        }
+
+        private void ConfirmDeleteSSHKey_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteConfirmFlyout.Hide();
+
             if (SSHKeyListView.SelectedItem is SSHKeyModel selectedKey)
             {
                 SQLiteHelper dbHelper = new SQLiteHelper();
                 dbHelper.DeleteSSHKey(selectedKey.Id);
                 LoadSSHKeys();
             }
+        }
+
+        private void CancelDeleteSSHKey_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteConfirmFlyout.Hide();
         }
 
         private void SSHKeyListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
