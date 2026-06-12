@@ -1,0 +1,5 @@
+FindWindow
+ShowWindow
+SetForegroundWindow
+GetDpiForWindow
+SetWindowPos

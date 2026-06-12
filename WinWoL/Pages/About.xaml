@@ -323,8 +323,8 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Content="PInvoke.User32"
-                        NavigateUri="https://www.nuget.org/packages/PInvoke.User32/" />
+                        Content="Microsoft.Windows.CsWin32"
+                        NavigateUri="https://www.nuget.org/packages/Microsoft.Windows.CsWin32/" />
                 </Grid>
                 <TextBlock
                     x:Name="TipsTips"
