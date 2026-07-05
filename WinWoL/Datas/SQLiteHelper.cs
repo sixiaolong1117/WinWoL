@@ -10,12 +10,16 @@ namespace WinWoL.Datas
     public class SQLiteHelper
     {
         private const int CurrentDatabaseVersion = 3;
-        private const string ConnectionString = "Data Source=wol.db";
+        private const string DefaultConnectionString = "Data Source=wol.db";
+        private readonly string _connectionString;
         private const string WoLColumns = "Id, Name, MacAddress, IPAddress, WoLAddress, WoLPort, RDPPort, SSHCommand, SSHPort, SSHUser, SSHKeyPath, SSHKeyId, WoLIsOpen, RDPIsOpen, SSHIsOpen, BroadcastIsOpen, SSHKeyIsOpen";
         private const string SSHColumns = "Id, Name, IPAddress, SSHCommand, SSHPort, SSHUser, SSHKeyPath, SSHKeyId, SSHKeyIsOpen";
 
-        public SQLiteHelper()
+        public SQLiteHelper() : this(DefaultConnectionString) { }
+
+        public SQLiteHelper(string connectionString)
         {
+            _connectionString = connectionString;
             CreateTableIfNotExists();
             UpgradeDatabase();
         }
@@ -23,7 +27,7 @@ namespace WinWoL.Datas
         // 建表
         public void CreateTableIfNotExists()
         {
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -46,7 +50,7 @@ namespace WinWoL.Datas
         // 删表
         public void DropTable()
         {
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -71,7 +75,7 @@ namespace WinWoL.Datas
         // 检查数据库版本
         public int GetDatabaseVersion()
         {
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
                 return GetDatabaseVersion(connection);
@@ -81,7 +85,7 @@ namespace WinWoL.Datas
         // 更新数据库版本信息
         public void UpgradeDatabaseVersion()
         {
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
                 SetDatabaseVersion(connection, CurrentDatabaseVersion);
@@ -91,7 +95,7 @@ namespace WinWoL.Datas
         // 数据库升级
         public void UpgradeDatabase()
         {
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -115,7 +119,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -147,7 +151,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -171,7 +175,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -184,7 +188,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -199,7 +203,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -214,7 +218,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -240,7 +244,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -273,7 +277,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -299,7 +303,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -323,7 +327,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -347,7 +351,7 @@ namespace WinWoL.Datas
         {
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -372,7 +376,7 @@ namespace WinWoL.Datas
             List<WoLModel> entries = new List<WoLModel>();
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -397,7 +401,7 @@ namespace WinWoL.Datas
             List<WoLModel> entries = new List<WoLModel>();
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -434,7 +438,7 @@ namespace WinWoL.Datas
             List<WoLModel> entries = new List<WoLModel>();
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -458,7 +462,7 @@ namespace WinWoL.Datas
             List<SSHModel> entries = new List<SSHModel>();
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -482,7 +486,7 @@ namespace WinWoL.Datas
             List<SSHKeyModel> entries = new List<SSHKeyModel>();
             UpgradeDatabase();
 
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -805,9 +809,9 @@ namespace WinWoL.Datas
             }
         }
 
-        private static int GetAdjacentId(string tableName, int sourceId, bool previous)
+        private int GetAdjacentId(string tableName, int sourceId, bool previous)
         {
-            using (SqliteConnection connection = new SqliteConnection(ConnectionString))
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
